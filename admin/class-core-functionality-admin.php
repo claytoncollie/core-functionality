@@ -68,7 +68,7 @@ class Core_Functionality_Admin {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-user-contact-fields.php';
 
 		// Disable comments functionality
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-comments.php';
+		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-comments.php';
 		
 		// Taxonomy - FORM
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-taxonomy-form.php';

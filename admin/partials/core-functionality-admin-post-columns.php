@@ -49,34 +49,35 @@ function rc_columns_head($defaults) {
  
 // Content for columns
 add_action('manage_posts_custom_column', 'rc_columns_content', 10, 2);
-function rc_columns_content($column_name, $post_ID) {
+function rc_columns_content($column_name) {
+	
     
 	if ($column_name == 'featured_image') {
-        $post_featured_image = get_the_post_thumbnail($post_ID, array(75));
+        $post_featured_image = get_the_post_thumbnail( get_the_ID() , array(75,75));
        
 	    echo $post_featured_image;
     }
 	
 	if ($column_name == 'object_id') {
-        $object_id = get_field('object_id', $post_id);
+        $object_id = get_field('object_id', get_the_ID() );
        
 	    echo $object_id;
     }
 	
 	if ($column_name == 'height') {
-        $column = get_field('height', $post_id);
+        $column = get_field('height', get_the_ID() );
        
 	    echo $column;
     }
 	
 	if ($column_name == 'width') {
-        $column = get_field('width', $post_id);
+        $column = get_field('width', get_the_ID() );
        
 	    echo $column;
     }
 	
 	if ($column_name == 'length') {
-        $column = get_field('length', $post_id);
+        $column = get_field('length', get_the_ID() );
        
 	    echo $column;
     }
