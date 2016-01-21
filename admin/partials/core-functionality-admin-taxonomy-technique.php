@@ -46,6 +46,7 @@ function rc_taxonomy_technique() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => false,
 		'show_tagcloud'              => false,
+		'query_var'            		 => true,
 		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'rc_technique', array( 'post' ), $args );
