@@ -70,6 +70,9 @@ class Core_Functionality_Admin {
 		// Taxonomy - FORM
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-taxonomy-form.php';
 		
+		// Taxonomy Column - FORM
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-taxonomy-form-columns.php';
+		
 		// Taxonomy - FIRING
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-taxonomy-firing.php';
 		
