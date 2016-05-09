@@ -92,6 +92,17 @@ class Core_Functionality_Admin {
 			remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
 		}
 
+		add_action( 'init', 'rc_unregister_taxonomy');
+		remove_action( 'genesis_entry_footer', 'genesis_post_meta' ); // uncomment this if you're using Genesis to avoid errors
+		function rc_unregister_taxonomy(){
+			global $wp_taxonomies;
+			$taxonomies = array( 'category', 'post_tag' );
+			foreach( $taxonomies as $taxonomy ) {
+				if ( taxonomy_exists( $taxonomy) )
+					unset( $wp_taxonomies[$taxonomy]);
+			}
+		}
+
 	}
 
 	/**

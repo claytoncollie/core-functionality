@@ -43,6 +43,7 @@ function rc_columns_head($defaults) {
 	$defaults['height'] = 'Height';
 	$defaults['width'] = 'Width';
 	$defaults['length'] = 'Length';
+	$defaults['gallery'] = 'Gallery';
   
     return $defaults;
 }
@@ -98,6 +99,22 @@ function rc_columns_content($column_name,$term_id) {
         $column = get_field('length', get_the_ID() );
        
 	    echo $column;
+    }
+
+    if ($column_name == 'gallery') {
+    	
+    	$images = get_field('images', get_the_ID() );
+
+    	if($images) {
+		
+			foreach( $images as $image ): 
+				
+				echo '<img src="'.$image['sizes']['thumbnail'].'" style="width: 50px; float: left; margin: 0 5px 5px 0px;"/>';
+				
+			endforeach;
+
+		}
+		
     }
 		
 }
