@@ -31,7 +31,7 @@ function rc_user_column_content($value, $column_name, $user_id) {
 	$author_avatar = wp_get_attachment_image_src( $attachment_id, $size );
     
 	if ( 'website' == $column_name ) {
-		$output .= '<a target="_blank" href="';
+		$output = '<a target="_blank" href="';
         
 		$output .= ($user_info->user_url);
 		
@@ -43,7 +43,7 @@ function rc_user_column_content($value, $column_name, $user_id) {
 	
 	if ( 'photo' == $column_name ) {
 
-		$output .= '<img src="'.$author_avatar[0].'" style="max-height: 100px;">';
+		$output = '<img src="'.$author_avatar[0].'" style="max-height: 100px;">';
            
 	return $output;
 
