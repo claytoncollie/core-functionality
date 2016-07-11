@@ -84,6 +84,9 @@ class Core_Functionality_Admin {
 		
 		// Taxonomy - COLUMN
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-taxonomy-column.php';
+
+		// Taxonomy - LOCATION
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/core-functionality-admin-taxonomy-location.php';
 		
 		// Remove categories and tags from admin section
 		add_action('admin_menu', 'my_remove_sub_menus');
@@ -102,6 +105,15 @@ class Core_Functionality_Admin {
 					unset( $wp_taxonomies[$taxonomy]);
 			}
 		}
+
+		/**
+		 * Production URL 
+		 *
+		 */
+		function prefix_production_url( $url ) {
+			return 'http://rc.claytoncollie.com';
+		}
+		//add_filter( 'be_media_from_production_url', 'prefix_production_url' );
 
 	}
 
