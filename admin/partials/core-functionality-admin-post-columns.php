@@ -27,6 +27,7 @@ function rc_columns_head($defaults) {
 	unset($defaults['taxonomy-rc_technique']);
 	unset($defaults['taxonomy-rc_row']);
 	unset($defaults['taxonomy-rc_column']);
+	unset($defaults['taxonomy-rc_location']);
 	
 	//add columns with new order
 	$defaults['featured_image']  = 'Featured Image';
@@ -40,6 +41,7 @@ function rc_columns_head($defaults) {
 	$defaults['taxonomy-rc_technique'] = 'Technique';
 	$defaults['taxonomy-rc_row'] = 'Row';
 	$defaults['taxonomy-rc_column'] = 'Column';
+	$defaults['taxonomy-rc_location'] = 'Location';
 	$defaults['height'] = 'Height';
 	$defaults['width'] = 'Width';
 	$defaults['length'] = 'Length';
@@ -138,7 +140,7 @@ function rc_add_taxonomy_filters_form() {
 	global $typenow;
  
 	// an array of all the taxonomyies you want to display. Use the taxonomy name or slug
-	$taxonomies = array('rc_form', 'rc_firing', 'rc_technique', 'rc_row', 'rc_column');
+	$taxonomies = array('rc_form', 'rc_firing', 'rc_technique', 'rc_row', 'rc_column', 'rc_location');
  
 	// must set this to the post type you want the filter(s) displayed on
 	if( $typenow == 'post' ){
