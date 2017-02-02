@@ -69,7 +69,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -114,6 +114,11 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-admin.php';
 
 		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-disable-comments.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -151,9 +156,23 @@ class Core_Functionality {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
+		$comments	  = new Core_Functionality_Disable_Comments( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		if( isset( $comments ) ) {
+			$this->loader->add_action( 'admin_init', $comments, 'rc_update_options_page' );
+			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_post_types_support' );
+			$this->loader->add_action( 'wp_before_admin_bar_render', $comments, 'rc_remove_admin_bar_link' );
+			$this->loader->add_filter( 'comments_array', $comments, 'rc_disable_comments_hide_existing_comments', 10, 2 );
+			$this->loader->add_action( 'admin_menu', $comments, 'rc_disable_comments_admin_menu' );
+			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_admin_menu_redirect' );
+			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_dashboard' );
+			$this->loader->add_action( 'init', $comments, 'rc_disable_comments_admin_bar' );
+			$this->loader->add_action( 'widgets_init', $comments, 'rc_disable_comments_widget' );
+			$this->loader->add_action( 'admin_head', $comments, 'rc_hide_dashboard_bits' );
+		}
 
 	}
 
@@ -168,8 +187,8 @@ class Core_Functionality {
 
 		$plugin_public = new Core_Functionality_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
 

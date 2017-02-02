@@ -111,7 +111,7 @@ class Core_Functionality_Admin {
 		 *
 		 */
 		function prefix_production_url( $url ) {
-			return 'http://rc.claytoncollie.com';
+			return 'http://www.rosenfieldcollection.com';
 		}
 		//add_filter( 'be_media_from_production_url', 'prefix_production_url' );
 
@@ -165,4 +165,3 @@ class Core_Functionality_Admin {
 	
 	
 }
-
