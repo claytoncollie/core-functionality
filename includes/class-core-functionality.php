@@ -69,12 +69,11 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version = '1.0.1';
+		$this->version = '1.1.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
 
 	}
 
@@ -116,13 +115,12 @@ class Core_Functionality {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-disable-comments.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-comments.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
+		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-core-functionality-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-taxonomy.php';
 
 		$this->loader = new Core_Functionality_Loader();
 
@@ -140,6 +138,7 @@ class Core_Functionality {
 	private function set_locale() {
 
 		$plugin_i18n = new Core_Functionality_i18n();
+
 		$plugin_i18n->set_domain( $this->get_plugin_name() );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
@@ -155,40 +154,52 @@ class Core_Functionality {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
-		$comments	  = new Core_Functionality_Disable_Comments( $this->get_plugin_name(), $this->get_version() );
+		$admin 		= new Core_Functionality_Admin	 ( $this->get_plugin_name(), $this->get_version() );
+		$comments	= new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
+		$taxonomy	= new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 
-		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		//$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
-		if( isset( $comments ) ) {
-			$this->loader->add_action( 'admin_init', $comments, 'rc_update_options_page' );
-			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_post_types_support' );
-			$this->loader->add_action( 'wp_before_admin_bar_render', $comments, 'rc_remove_admin_bar_link' );
-			$this->loader->add_filter( 'comments_array', $comments, 'rc_disable_comments_hide_existing_comments', 10, 2 );
-			$this->loader->add_action( 'admin_menu', $comments, 'rc_disable_comments_admin_menu' );
-			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_admin_menu_redirect' );
-			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_dashboard' );
-			$this->loader->add_action( 'init', $comments, 'rc_disable_comments_admin_bar' );
-			$this->loader->add_action( 'widgets_init', $comments, 'rc_disable_comments_widget' );
-			$this->loader->add_action( 'admin_head', $comments, 'rc_hide_dashboard_bits' );
+		if( isset( $admin ) ) {
+			$this->loader->add_action( 'admin_menu', 						$admin, 'rc_remove_sub_menus' );
+			$this->loader->add_action( 'init', 								$admin, 'rc_unregister_taxonomy' );
+			$this->loader->add_action( 'init', 								$admin, 'rc_clean_header' );
+			$this->loader->add_filter( 'xmlrpc_methods', 					$admin, 'rc_remove_xmlrpc_pingback_ping' );
+			$this->loader->add_action( 'admin_init', 						$admin, 'rc_remove_dashboard_widgets' );
+			$this->loader->add_action( 'wp_dashboard_setup', 				$admin, 'rc_custom_dashboard_widgets' );
+			$this->loader->add_action( 'admin_menu', 						$admin, 'rc_remove_admin_menus' );
+			$this->loader->add_action( 'manage_posts_columns', 				$admin, 'rc_post_column_titles' );
+			$this->loader->add_action( 'manage_posts_custom_column', 		$admin, 'rc_post_column_content', 10, 2 );
+			$this->loader->add_filter( 'manage_edit-post_sortable_columns', $admin, 'rc_post_id_column_sortable' );
+			$this->loader->add_action( 'load-edit.php', 					$admin, 'rc_no_category_dropdown' );
+			$this->loader->add_action( 'restrict_manage_posts', 			$admin, 'rc_add_taxonomy_filters_form' );
+			$this->loader->add_filter( 'manage_users_columns', 				$admin, 'rc_user_column_titles' );
+			$this->loader->add_action( 'manage_users_custom_column', 		$admin, 'rc_user_column_content', 10, 3 );
+			$this->loader->add_action( 'user_contactmethods', 				$admin, 'rc_modify_user_contact_methods' );
+			$this->loader->add_filter( 'manage_edit-rc_form_columns', 		$admin, 'rc_form_taxonomy_column_title' );
+			$this->loader->add_filter( 'manage_rc_form_custom_column', 		$admin, 'rc_form_taxonomy_column_content', 10, 3 );
 		}
 
-	}
+		if( isset( $comments ) ) {
+			$this->loader->add_action( 'admin_init', 					$comments, 'rc_update_options_page' );
+			$this->loader->add_action( 'admin_init', 					$comments, 'rc_disable_comments_post_types_support' );
+			$this->loader->add_action( 'wp_before_admin_bar_render', 	$comments, 'rc_remove_admin_bar_link' );
+			$this->loader->add_filter( 'comments_array', 				$comments, 'rc_disable_comments_hide_existing_comments', 10, 2 );
+			$this->loader->add_action( 'admin_menu', 					$comments, 'rc_disable_comments_admin_menu' );
+			$this->loader->add_action( 'admin_init', 					$comments, 'rc_disable_comments_admin_menu_redirect' );
+			$this->loader->add_action( 'admin_init', 					$comments, 'rc_disable_comments_dashboard' );
+			$this->loader->add_action( 'init', 							$comments, 'rc_disable_comments_admin_bar' );
+			$this->loader->add_action( 'init', 							$comments, 'rc_disable_comments_and_pings' );
+			$this->loader->add_action( 'widgets_init', 					$comments, 'rc_disable_comments_widget' );
+			$this->loader->add_action( 'admin_head', 					$comments, 'rc_hide_dashboard_bits' );
+		}
 
-	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function define_public_hooks() {
-
-		$plugin_public = new Core_Functionality_Public( $this->get_plugin_name(), $this->get_version() );
-
-		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		//$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		if( isset( $taxonomy ) ) {
+			$this->loader->add_action( 'init', 	$taxonomy, 'rc_taxonomy_column' );
+			$this->loader->add_action( 'init', 	$taxonomy, 'rc_taxonomy_firing' );
+			$this->loader->add_action( 'init', 	$taxonomy, 'rc_taxonomy_form' );
+			$this->loader->add_action( 'init', 	$taxonomy, 'rc_taxonomy_location' );
+			$this->loader->add_action( 'init', 	$taxonomy, 'rc_taxonomy_row' );
+			$this->loader->add_action( 'init', 	$taxonomy, 'rc_taxonomy_technique' );
+		}
 
 	}
 

@@ -20,7 +20,7 @@
  * @subpackage Core_Functionality/admin
  * @author     Clayton Collie <clayton.collie@gmail.com>
  */
-class Core_Functionality_Disable_Comments {
+class Core_Functionality_Comments {
 
 	/**
 	 * The ID of this plugin.
@@ -44,20 +44,21 @@ class Core_Functionality_Disable_Comments {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param    string    $plugin_name     The name of this plugin.
+	 * @param    string    $version    		The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version, $labels = array(), $rewrite = array(), $args = array() ) {
+	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name 	= $plugin_name;
 		$this->version 		= $version;
 
 	}
 
-	/*
+	/**
 	 *
 	 * Update fields on options-comments.php
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_update_options_page() {
 
@@ -69,15 +70,13 @@ class Core_Functionality_Disable_Comments {
 	}
 	
 	
-	/*
+	/**
 	 *
 	 * Disable support for comments and trackbacks in post types
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_post_types_support() {
-		
-		add_filter( 'comments_open', '__return_false', 20, 2);
-		add_filter( 'pings_open', '__return_false', 20, 2);
 
 		$post_types = get_post_types();
 		
@@ -95,7 +94,12 @@ class Core_Functionality_Disable_Comments {
 
 	}
 
-	// remove links/menus from the admin bar
+	/**
+	 *
+	 * Remove links/menus from the admin bar
+	 *
+	 * @since    1.0.0
+	 */
 	function rc_remove_admin_bar_link() {
 		
 		global $wp_admin_bar;
@@ -105,10 +109,11 @@ class Core_Functionality_Disable_Comments {
 	}
 
 
-	/*
+	/**
 	 *
 	 * Hide existing comments
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_hide_existing_comments( $comments ) {
 		
@@ -119,10 +124,11 @@ class Core_Functionality_Disable_Comments {
 	}
 
 
-	/*
+	/**
 	 *
 	 * Remove admin pages
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_admin_menu() {
 
@@ -136,10 +142,11 @@ class Core_Functionality_Disable_Comments {
 	
 
 
-	/*
+	/**
 	 *
 	 * Redirect any user trying to access comments page
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_admin_menu_redirect() {
 		
@@ -147,7 +154,7 @@ class Core_Functionality_Disable_Comments {
 		
 		if ( $pagenow == 'comment.php' || $pagenow === 'edit-comments.php' || $pagenow === 'options-discussion.php' ) {
 
-			wp_die( __( 'Comments are closed.' ), '', array( 'response' => 403 ) );
+			wp_die( __( 'Comments are closed.', $this->plugin_name ), '', array( 'response' => 403 ) );
 
 		}
 
@@ -155,10 +162,11 @@ class Core_Functionality_Disable_Comments {
 
 
 
-	/*
+	/**
 	 *
 	 * Remove comments metabox from dashboard
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_dashboard() {
 
@@ -166,12 +174,29 @@ class Core_Functionality_Disable_Comments {
 
 	}
 
+	/**
+	 *
+	 * Remove comments metabox from dashboard
+	 *
+	 * @since    1.1.0
+	 */
+	public function rc_disable_comments_and_pings() {
+
+		// Close comments
+		add_filter( 'comments_open', '__return_false', 20, 2);
+
+		// Close pings
+		add_filter( 'pings_open', '__return_false', 20, 2);
+
+	}
 
 
-	/*
+
+	/**
 	 *
 	 * Remove comments links from admin bar
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_admin_bar() {
 		
@@ -182,9 +207,10 @@ class Core_Functionality_Disable_Comments {
 		}
 	}
 
-	/*
+	/**
 	 * Remove comments widget
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_widget() {
 		
@@ -192,9 +218,10 @@ class Core_Functionality_Disable_Comments {
 
 	}
 	
-	/*
+	/**
 	 * Hides comments link on dashboard
 	 *
+	 * @since    1.0.0
 	 */
 	public function rc_hide_dashboard_bits(){
 		

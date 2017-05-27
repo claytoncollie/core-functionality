@@ -16,7 +16,7 @@
  * Plugin Name:       Core Functionality
  * Plugin URI:        https://github.com/claytoncollie/Core-Functionality
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.1
+ * Version:           1.1.0
  * Author:            Clayton Collie
  * Author URI:        http://www.claytoncollie.com
  * License:           GPL-2.0+
@@ -57,6 +57,8 @@ register_deactivation_hook( __FILE__, 'deactivate_core_functionality' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-core-functionality.php';
 
+
+add_action( 'plugins_loaded', 'run_core_functionality', 10 );
 /**
  * Begins execution of the plugin.
  *
@@ -72,4 +74,3 @@ function run_core_functionality() {
 	$plugin->run();
 
 }
-run_core_functionality();
