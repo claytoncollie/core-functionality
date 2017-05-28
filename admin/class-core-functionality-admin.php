@@ -298,7 +298,7 @@ class Core_Functionality_Admin {
 
 	        if( has_post_thumbnail( $post_id ) ) {
 
-	        	the_post_thumbnail( $post_id , 'thumbnail' );
+	        	the_post_thumbnail( 'thumbnail' );
 
 	        }
 
