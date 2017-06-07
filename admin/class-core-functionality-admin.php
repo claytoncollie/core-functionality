@@ -583,5 +583,24 @@ class Core_Functionality_Admin {
 
 	}
 
+	function rc_add_image_to_RSS($content) {
+
+		if ( has_post_thumbnail( get_the_ID() ) ){
+			
+			$content = sprintf('%s',
+				get_the_post_thumbnail( 
+					get_the_ID(), 
+					'archive-image'
+				)
+			);
+		
+		}
+
+		return $content;
+
+	}
+ 
+
+
 	
 }

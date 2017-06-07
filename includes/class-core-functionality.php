@@ -69,7 +69,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version = '1.1.0';
+		$this->version = '1.1.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -176,6 +176,8 @@ class Core_Functionality {
 			$this->loader->add_action( 'user_contactmethods', 				$admin, 'rc_modify_user_contact_methods' );
 			$this->loader->add_filter( 'manage_edit-rc_form_columns', 		$admin, 'rc_form_taxonomy_column_title' );
 			$this->loader->add_filter( 'manage_rc_form_custom_column', 		$admin, 'rc_form_taxonomy_column_content', 10, 3 );
+			$this->loader->add_filter( 'the_excerpt_rss', 					$admin, 'rc_add_image_to_RSS');
+			$this->loader->add_filter( 'the_content_feed', 					$admin, 'rc_add_image_to_RSS');
 		}
 
 		if( isset( $comments ) ) {

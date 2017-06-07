@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.1.1 =
+* Add featured image ot RSS feed content
+
 = 1.1.0 =
 * cleaned up files and move functions into respective classes
 * removed public folder completely
