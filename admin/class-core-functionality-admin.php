@@ -587,7 +587,8 @@ class Core_Functionality_Admin {
 
 		if ( has_post_thumbnail( get_the_ID() ) ){
 			
-			$content = sprintf('%s',
+			$content = sprintf('<a href="%s">%s</a>',
+				get_permalink( get_the_ID() ),
 				get_the_post_thumbnail( 
 					get_the_ID(), 
 					'archive-image'
