@@ -45,9 +45,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-core-functionality.php';
  *
  * @since    1.0.0
  */
-function run_core_functionality() {
+function core_functionality_run() {
 
 	$plugin = new Core_Functionality();
 	$plugin->run();
 
 }
+core_functionality_run();
