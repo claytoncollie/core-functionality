@@ -54,6 +54,26 @@ class Core_Functionality_Admin {
 	}
 
 	/**
+	 * Enabling the Gutenberg editor all post types except post.
+	 *
+	 * @param bool   $can_edit  Whether to use the Gutenberg editor.
+	 * @param string $post_type Name of WordPress post type.
+	 *
+	 * @return bool
+	 *
+	 * @since 1.2.0
+	 */
+	public function gutenberg_support( $can_edit, $post_type ) {
+
+		if ( in_array( $post_type, array( 'post' ), true ) ) {
+			$can_edit = false;
+		}
+
+		return $can_edit;
+
+	}
+
+	/**
 	 * Remove submenu pages for category and post tag
 	 *
 	 * @since    1.0.0

@@ -158,6 +158,7 @@ class Core_Functionality {
 		$taxonomy = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
+			$this->loader->add_filter( 'use_block_editor_for_post_type', $admin, 'gutenberg_support', 10, 2 );
 			$this->loader->add_action( 'admin_menu', $admin, 'remove_sub_menus' );
 			$this->loader->add_action( 'init', $admin, 'unregister_taxonomy' );
 			$this->loader->add_action( 'init', $admin, 'clean_header' );
