@@ -58,7 +58,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_remove_sub_menus() {
+	public function remove_sub_menus() {
 		remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );
 		remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=post_tag' );
 	}
@@ -68,7 +68,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_unregister_taxonomy() {
+	public function unregister_taxonomy() {
 
 		global $wp_taxonomies;
 
@@ -90,7 +90,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_clean_header() {
+	public function clean_header() {
 
 		// Remove feed links
 		remove_action( 'wp_head', 'feed_links', 2 );
@@ -131,7 +131,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_remove_xmlrpc_pingback_ping( $methods ) {
+	public function remove_xmlrpc_pingback_ping( $methods ) {
 		unset( $methods['pingback.ping'] );
 		return $methods;
 	}
@@ -141,7 +141,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_remove_dashboard_widgets() {
+	public function remove_dashboard_widgets() {
 
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
@@ -170,14 +170,14 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_custom_dashboard_widgets() {
+	public function custom_dashboard_widgets() {
 
 		global $wp_meta_boxes;
 
 		wp_add_dashboard_widget(
 			'custom_help_widget',
-			__( 'Welcome to the Rosenfield Collection', $this->plugin_name ),
-			array( $this, 'rc_dashboard_help' )
+			__( 'Welcome to the Rosenfield Collection', 'core-functionality' ),
+			array( $this, 'dashboard_help' )
 		);
 
 	}
@@ -187,14 +187,14 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_dashboard_help() {
+	public function dashboard_help() {
 
 		printf(
 			'<p>%s %s</p><p>%s</p><p>%s</p>',
-			__( 'Hi there! This is where you can access your personal profile.', $this->plugin_name ),
-			__( 'Select the Profile link on the left to change the spelling of your name, email address, website address, social media links or your profile photo.', $this->plugin_name ),
-			__( 'Need extra help or want to report a problem with the website?', $this->plugin_name ),
-			__( 'Contact the team at <a href="mailto:info@rosenfieldcollection.com">info@rosenfieldcollection.com</a>', $this->plugin_name )
+			__( 'Hi there! This is where you can access your personal profile.', 'core-functionality' ),
+			__( 'Select the Profile link on the left to change the spelling of your name, email address, website address, social media links or your profile photo.', 'core-functionality' ),
+			__( 'Need extra help or want to report a problem with the website?', 'core-functionality' ),
+			__( 'Contact the team at <a href="mailto:info@rosenfieldcollection.com">info@rosenfieldcollection.com</a>', 'core-functionality' )
 		);
 
 	}
@@ -204,7 +204,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_remove_admin_menus() {
+	public function remove_admin_menus() {
 
 		$user = wp_get_current_user();
 
@@ -245,7 +245,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_post_column_titles( $defaults ) {
+	public function post_column_titles( $defaults ) {
 
 		// Unset default columns
 		unset( $defaults['title'] );
@@ -262,22 +262,22 @@ class Core_Functionality_Admin {
 		unset( $defaults['taxonomy-rc_location'] );
 
 		// add columns with new order
-		$defaults['featured_image']        = __( 'Featured Image', $this->plugin_name );
-		$defaults['title']                 = __( 'Title', $this->plugin_name );
-		$defaults['author']                = __( 'Artist', $this->plugin_name );
-		$defaults['rc_form_object_prefix'] = __( 'Prefix', $this->plugin_name );
-		$defaults['object_id']             = __( 'ID', $this->plugin_name );
-		$defaults['date']                  = __( 'Date', $this->plugin_name );
-		$defaults['taxonomy-rc_form']      = __( 'Form', $this->plugin_name );
-		$defaults['taxonomy-rc_firing']    = __( 'Firing', $this->plugin_name );
-		$defaults['taxonomy-rc_technique'] = __( 'Technique', $this->plugin_name );
-		$defaults['taxonomy-rc_row']       = __( 'Row', $this->plugin_name );
-		$defaults['taxonomy-rc_column']    = __( 'Column', $this->plugin_name );
-		$defaults['taxonomy-rc_location']  = __( 'Location', $this->plugin_name );
-		$defaults['height']                = __( 'Height', $this->plugin_name );
-		$defaults['width']                 = __( 'Width', $this->plugin_name );
-		$defaults['length']                = __( 'Length', $this->plugin_name );
-		$defaults['gallery']               = __( 'Gallery', $this->plugin_name );
+		$defaults['featured_image']        = __( 'Featured Image', 'core-functionality' );
+		$defaults['title']                 = __( 'Title', 'core-functionality' );
+		$defaults['author']                = __( 'Artist', 'core-functionality' );
+		$defaults['rc_form_object_prefix'] = __( 'Prefix', 'core-functionality' );
+		$defaults['object_id']             = __( 'ID', 'core-functionality' );
+		$defaults['date']                  = __( 'Date', 'core-functionality' );
+		$defaults['taxonomy-rc_form']      = __( 'Form', 'core-functionality' );
+		$defaults['taxonomy-rc_firing']    = __( 'Firing', 'core-functionality' );
+		$defaults['taxonomy-rc_technique'] = __( 'Technique', 'core-functionality' );
+		$defaults['taxonomy-rc_row']       = __( 'Row', 'core-functionality' );
+		$defaults['taxonomy-rc_column']    = __( 'Column', 'core-functionality' );
+		$defaults['taxonomy-rc_location']  = __( 'Location', 'core-functionality' );
+		$defaults['height']                = __( 'Height', 'core-functionality' );
+		$defaults['width']                 = __( 'Width', 'core-functionality' );
+		$defaults['length']                = __( 'Length', 'core-functionality' );
+		$defaults['gallery']               = __( 'Gallery', 'core-functionality' );
 
 		return $defaults;
 
@@ -289,7 +289,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_post_column_content( $column_name, $post_id ) {
+	public function post_column_content( $column_name, $post_id ) {
 
 		if ( $column_name == 'featured_image' ) {
 
@@ -387,7 +387,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_post_id_column_sortable( $sortable ) {
+	public function post_id_column_sortable( $sortable ) {
 		$sortable['object_id'] = 'object_id';
 		return $sortable;
 	}
@@ -397,7 +397,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_no_category_dropdown() {
+	public function no_category_dropdown() {
 		add_filter( 'wp_dropdown_cats', '__return_false' );
 	}
 
@@ -406,7 +406,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_add_taxonomy_filters_form() {
+	public function add_taxonomy_filters_form() {
 
 		global $typenow;
 
@@ -438,7 +438,7 @@ class Core_Functionality_Admin {
 
 					printf(
 						'<option value="">%s %s</option>',
-						__( 'Show All', $this->plugin_name ),
+						__( 'Show All', 'core-functionality' ),
 						esc_html( $tax_name )
 					);
 
@@ -466,10 +466,10 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_user_column_titles( $columns ) {
+	public function user_column_titles( $columns ) {
 
-		$columns['photo']   = __( 'Photo', $this->plugin_name );
-		$columns['website'] = __( 'Website', $this->plugin_name );
+		$columns['photo']   = __( 'Photo', 'core-functionality' );
+		$columns['website'] = __( 'Website', 'core-functionality' );
 
 		return $columns;
 	}
@@ -479,7 +479,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_user_column_content( $value, $column_name, $user_id ) {
+	public function user_column_content( $value, $column_name, $user_id ) {
 
 		$user_info     = get_userdata( $user_id );
 		$attachment_id = get_field( 'artist_photo', 'user_' . $user_id );
@@ -514,17 +514,17 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_modify_user_contact_methods( $user_contact ) {
+	public function modify_user_contact_methods( $user_contact ) {
 
 		unset( $user_contact['aim'] );
 		unset( $user_contact['jabber'] );
 		unset( $user_contact['yim'] );
 		unset( $user_contact['gplus'] );
 
-		$user_contact['twitter']   = __( 'Twitter', $this->plugin_name );
-		$user_contact['facebook']  = __( 'Facebook', $this->plugin_name );
-		$user_contact['instagram'] = __( 'Instagram', $this->plugin_name );
-		$user_contact['pinterest'] = __( 'Pinterest', $this->plugin_name );
+		$user_contact['twitter']   = __( 'Twitter', 'core-functionality' );
+		$user_contact['facebook']  = __( 'Facebook', 'core-functionality' );
+		$user_contact['instagram'] = __( 'Instagram', 'core-functionality' );
+		$user_contact['pinterest'] = __( 'Pinterest', 'core-functionality' );
 
 		return $user_contact;
 
@@ -535,7 +535,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_form_taxonomy_column_title( $defaults ) {
+	public function form_taxonomy_column_title( $defaults ) {
 
 		// Unset default columns
 		unset( $defaults['name'] );
@@ -544,10 +544,10 @@ class Core_Functionality_Admin {
 		unset( $defaults['posts'] );
 
 		// Add columns back in proper order
-		$defaults['name']                  = __( 'Name', $this->plugin_name );
-		$defaults['rc_form_object_prefix'] = __( 'Prefix', $this->plugin_name );
-		$defaults['slug']                  = __( 'Slug', $this->plugin_name );
-		$defaults['posts']                 = __( 'Count', $this->plugin_name );
+		$defaults['name']                  = __( 'Name', 'core-functionality' );
+		$defaults['rc_form_object_prefix'] = __( 'Prefix', 'core-functionality' );
+		$defaults['slug']                  = __( 'Slug', 'core-functionality' );
+		$defaults['posts']                 = __( 'Count', 'core-functionality' );
 
 		return $defaults;
 	}
@@ -557,7 +557,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_form_taxonomy_column_content( $content, $column_name, $term_id ) {
+	public function form_taxonomy_column_content( $content, $column_name, $term_id ) {
 
 		switch ( $column_name ) {
 
@@ -578,7 +578,7 @@ class Core_Functionality_Admin {
 
 	}
 
-	function rc_add_image_to_RSS( $content ) {
+	function add_image_to_RSS( $content ) {
 
 		if ( has_post_thumbnail( get_the_ID() ) ) {
 

@@ -59,7 +59,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_update_options_page() {
+	public function update_options_page() {
 
 		update_option( 'default_pingback_flag', 'closed' );
 		update_option( 'default_ping_status', 'closed' );
@@ -75,7 +75,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_post_types_support() {
+	public function disable_comments_post_types_support() {
 
 		$post_types = get_post_types();
 
@@ -98,7 +98,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	function rc_remove_admin_bar_link() {
+	function remove_admin_bar_link() {
 
 		global $wp_admin_bar;
 
@@ -113,7 +113,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_hide_existing_comments( $comments ) {
+	public function disable_comments_hide_existing_comments( $comments ) {
 
 		$comments = array();
 
@@ -128,7 +128,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_admin_menu() {
+	public function disable_comments_admin_menu() {
 
 		// Comments top level page
 		remove_menu_page( 'edit-comments.php' );
@@ -146,13 +146,13 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_admin_menu_redirect() {
+	public function disable_comments_admin_menu_redirect() {
 
 		global $pagenow;
 
 		if ( $pagenow == 'comment.php' || $pagenow === 'edit-comments.php' || $pagenow === 'options-discussion.php' ) {
 
-			wp_die( __( 'Comments are closed.', $this->plugin_name ), '', array( 'response' => 403 ) );
+			wp_die( __( 'Comments are closed.', 'core-functionality' ), '', array( 'response' => 403 ) );
 
 		}
 
@@ -166,7 +166,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_dashboard() {
+	public function disable_comments_dashboard() {
 
 		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
 
@@ -178,7 +178,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.1.0
 	 */
-	public function rc_disable_comments_and_pings() {
+	public function disable_comments_and_pings() {
 
 		// Close comments
 		add_filter( 'comments_open', '__return_false', 20, 2 );
@@ -196,7 +196,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_admin_bar() {
+	public function disable_comments_admin_bar() {
 
 		if ( is_admin_bar_showing() ) {
 
@@ -210,7 +210,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_disable_comments_widget() {
+	public function disable_comments_widget() {
 
 		unregister_widget( 'WP_Widget_Recent_Comments' );
 
@@ -221,7 +221,7 @@ class Core_Functionality_Comments {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_hide_dashboard_bits() {
+	public function hide_dashboard_bits() {
 
 		if ( 'dashboard' == get_current_screen()->id ) {
 

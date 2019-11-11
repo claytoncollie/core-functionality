@@ -158,48 +158,48 @@ class Core_Functionality {
 		$taxonomy = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
-			$this->loader->add_action( 'admin_menu', $admin, 'rc_remove_sub_menus' );
-			$this->loader->add_action( 'init', $admin, 'rc_unregister_taxonomy' );
-			$this->loader->add_action( 'init', $admin, 'rc_clean_header' );
-			$this->loader->add_filter( 'xmlrpc_methods', $admin, 'rc_remove_xmlrpc_pingback_ping' );
-			$this->loader->add_action( 'admin_init', $admin, 'rc_remove_dashboard_widgets' );
-			$this->loader->add_action( 'wp_dashboard_setup', $admin, 'rc_custom_dashboard_widgets' );
-			$this->loader->add_action( 'admin_menu', $admin, 'rc_remove_admin_menus' );
-			$this->loader->add_action( 'manage_posts_columns', $admin, 'rc_post_column_titles' );
-			$this->loader->add_action( 'manage_posts_custom_column', $admin, 'rc_post_column_content', 10, 2 );
-			$this->loader->add_filter( 'manage_edit-post_sortable_columns', $admin, 'rc_post_id_column_sortable' );
-			$this->loader->add_action( 'load-edit.php', $admin, 'rc_no_category_dropdown' );
-			$this->loader->add_action( 'restrict_manage_posts', $admin, 'rc_add_taxonomy_filters_form' );
-			$this->loader->add_filter( 'manage_users_columns', $admin, 'rc_user_column_titles' );
-			$this->loader->add_action( 'manage_users_custom_column', $admin, 'rc_user_column_content', 10, 3 );
-			$this->loader->add_action( 'user_contactmethods', $admin, 'rc_modify_user_contact_methods' );
-			$this->loader->add_filter( 'manage_edit-rc_form_columns', $admin, 'rc_form_taxonomy_column_title' );
-			$this->loader->add_filter( 'manage_rc_form_custom_column', $admin, 'rc_form_taxonomy_column_content', 10, 3 );
-			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'rc_add_image_to_RSS' );
-			$this->loader->add_filter( 'the_content_feed', $admin, 'rc_add_image_to_RSS' );
+			$this->loader->add_action( 'admin_menu', $admin, 'remove_sub_menus' );
+			$this->loader->add_action( 'init', $admin, 'unregister_taxonomy' );
+			$this->loader->add_action( 'init', $admin, 'clean_header' );
+			$this->loader->add_filter( 'xmlrpc_methods', $admin, 'remove_xmlrpc_pingback_ping' );
+			$this->loader->add_action( 'admin_init', $admin, 'remove_dashboard_widgets' );
+			$this->loader->add_action( 'wp_dashboard_setup', $admin, 'custom_dashboard_widgets' );
+			$this->loader->add_action( 'admin_menu', $admin, 'remove_admin_menus' );
+			$this->loader->add_action( 'manage_posts_columns', $admin, 'post_column_titles' );
+			$this->loader->add_action( 'manage_posts_custom_column', $admin, 'post_column_content', 10, 2 );
+			$this->loader->add_filter( 'manage_edit-post_sortable_columns', $admin, 'post_id_column_sortable' );
+			$this->loader->add_action( 'load-edit.php', $admin, 'no_category_dropdown' );
+			$this->loader->add_action( 'restrict_manage_posts', $admin, 'add_taxonomy_filters_form' );
+			$this->loader->add_filter( 'manage_users_columns', $admin, 'user_column_titles' );
+			$this->loader->add_action( 'manage_users_custom_column', $admin, 'user_column_content', 10, 3 );
+			$this->loader->add_action( 'user_contactmethods', $admin, 'modify_user_contact_methods' );
+			$this->loader->add_filter( 'manage_edit-rc_form_columns', $admin, 'form_taxonomy_column_title' );
+			$this->loader->add_filter( 'manage_rc_form_custom_column', $admin, 'form_taxonomy_column_content', 10, 3 );
+			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_RSS' );
+			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_RSS' );
 		}
 
 		if ( isset( $comments ) ) {
-			$this->loader->add_action( 'admin_init', $comments, 'rc_update_options_page' );
-			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_post_types_support' );
-			$this->loader->add_action( 'wp_before_admin_bar_render', $comments, 'rc_remove_admin_bar_link' );
-			$this->loader->add_filter( 'comments_array', $comments, 'rc_disable_comments_hide_existing_comments', 10, 2 );
-			$this->loader->add_action( 'admin_menu', $comments, 'rc_disable_comments_admin_menu' );
-			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_admin_menu_redirect' );
-			$this->loader->add_action( 'admin_init', $comments, 'rc_disable_comments_dashboard' );
-			$this->loader->add_action( 'init', $comments, 'rc_disable_comments_admin_bar' );
-			$this->loader->add_action( 'init', $comments, 'rc_disable_comments_and_pings' );
-			$this->loader->add_action( 'widgets_init', $comments, 'rc_disable_comments_widget' );
-			$this->loader->add_action( 'admin_head', $comments, 'rc_hide_dashboard_bits' );
+			$this->loader->add_action( 'admin_init', $comments, 'update_options_page' );
+			$this->loader->add_action( 'admin_init', $comments, 'disable_comments_post_types_support' );
+			$this->loader->add_action( 'wp_before_admin_bar_render', $comments, 'remove_admin_bar_link' );
+			$this->loader->add_filter( 'comments_array', $comments, 'disable_comments_hide_existing_comments', 10, 2 );
+			$this->loader->add_action( 'admin_menu', $comments, 'disable_comments_admin_menu' );
+			$this->loader->add_action( 'admin_init', $comments, 'disable_comments_admin_menu_redirect' );
+			$this->loader->add_action( 'admin_init', $comments, 'disable_comments_dashboard' );
+			$this->loader->add_action( 'init', $comments, 'disable_comments_admin_bar' );
+			$this->loader->add_action( 'init', $comments, 'disable_comments_and_pings' );
+			$this->loader->add_action( 'widgets_init', $comments, 'disable_comments_widget' );
+			$this->loader->add_action( 'admin_head', $comments, 'hide_dashboard_bits' );
 		}
 
 		if ( isset( $taxonomy ) ) {
-			$this->loader->add_action( 'init', $taxonomy, 'rc_taxonomy_column' );
-			$this->loader->add_action( 'init', $taxonomy, 'rc_taxonomy_firing' );
-			$this->loader->add_action( 'init', $taxonomy, 'rc_taxonomy_form' );
-			$this->loader->add_action( 'init', $taxonomy, 'rc_taxonomy_location' );
-			$this->loader->add_action( 'init', $taxonomy, 'rc_taxonomy_row' );
-			$this->loader->add_action( 'init', $taxonomy, 'rc_taxonomy_technique' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_column' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_firing' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_form' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_location' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_row' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_technique' );
 		}
 
 	}

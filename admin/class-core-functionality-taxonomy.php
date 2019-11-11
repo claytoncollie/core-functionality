@@ -58,26 +58,26 @@ class Core_Functionality_Taxonomy {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_taxonomy_column() {
+	public function taxonomy_column() {
 
 		$labels = array(
-			'name'                       => _x( 'Columns', 'Taxonomy General Name', $this->plugin_name ),
-			'singular_name'              => _x( 'Column', 'Taxonomy Singular Name', $this->plugin_name ),
-			'menu_name'                  => __( 'Columns', $this->plugin_name ),
-			'all_items'                  => __( 'All Items', $this->plugin_name ),
-			'parent_item'                => __( 'Parent Item', $this->plugin_name ),
-			'parent_item_colon'          => __( 'Parent Item:', $this->plugin_name ),
-			'new_item_name'              => __( 'New Item Name', $this->plugin_name ),
-			'add_new_item'               => __( 'Add New Item', $this->plugin_name ),
-			'edit_item'                  => __( 'Edit Item', $this->plugin_name ),
-			'update_item'                => __( 'Update Item', $this->plugin_name ),
-			'view_item'                  => __( 'View Item', $this->plugin_name ),
-			'separate_items_with_commas' => __( 'Separate items with commas', $this->plugin_name ),
-			'add_or_remove_items'        => __( 'Add or remove items', $this->plugin_name ),
-			'choose_from_most_used'      => __( 'Choose from the most used', $this->plugin_name ),
-			'popular_items'              => __( 'Popular Items', $this->plugin_name ),
-			'search_items'               => __( 'Search Items', $this->plugin_name ),
-			'not_found'                  => __( 'Not Found', $this->plugin_name ),
+			'name'                       => _x( 'Columns', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Column', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Columns', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
 		);
 
 		$rewrite = array(
@@ -107,26 +107,26 @@ class Core_Functionality_Taxonomy {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_taxonomy_firing() {
+	public function taxonomy_firing() {
 
 		$labels = array(
-			'name'                       => _x( 'Firings', 'Taxonomy General Name', $this->plugin_name ),
-			'singular_name'              => _x( 'Firing', 'Taxonomy Singular Name', $this->plugin_name ),
-			'menu_name'                  => __( 'Firings', $this->plugin_name ),
-			'all_items'                  => __( 'All Items', $this->plugin_name ),
-			'parent_item'                => __( 'Parent Item', $this->plugin_name ),
-			'parent_item_colon'          => __( 'Parent Item:', $this->plugin_name ),
-			'new_item_name'              => __( 'New Item Name', $this->plugin_name ),
-			'add_new_item'               => __( 'Add New Item', $this->plugin_name ),
-			'edit_item'                  => __( 'Edit Item', $this->plugin_name ),
-			'update_item'                => __( 'Update Item', $this->plugin_name ),
-			'view_item'                  => __( 'View Item', $this->plugin_name ),
-			'separate_items_with_commas' => __( 'Separate items with commas', $this->plugin_name ),
-			'add_or_remove_items'        => __( 'Add or remove items', $this->plugin_name ),
-			'choose_from_most_used'      => __( 'Choose from the most used', $this->plugin_name ),
-			'popular_items'              => __( 'Popular Items', $this->plugin_name ),
-			'search_items'               => __( 'Search Items', $this->plugin_name ),
-			'not_found'                  => __( 'Not Found', $this->plugin_name ),
+			'name'                       => _x( 'Firings', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Firing', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Firings', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
 		);
 
 		$rewrite = array(
@@ -156,26 +156,26 @@ class Core_Functionality_Taxonomy {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_taxonomy_form() {
+	public function taxonomy_form() {
 
 		$labels = array(
-			'name'                       => _x( 'Forms', 'Taxonomy General Name', $this->plugin_name ),
-			'singular_name'              => _x( 'Form', 'Taxonomy Singular Name', $this->plugin_name ),
-			'menu_name'                  => __( 'Forms', $this->plugin_name ),
-			'all_items'                  => __( 'All Items', $this->plugin_name ),
-			'parent_item'                => __( 'Parent Item', $this->plugin_name ),
-			'parent_item_colon'          => __( 'Parent Item:', $this->plugin_name ),
-			'new_item_name'              => __( 'New Item Name', $this->plugin_name ),
-			'add_new_item'               => __( 'Add New Item', $this->plugin_name ),
-			'edit_item'                  => __( 'Edit Item', $this->plugin_name ),
-			'update_item'                => __( 'Update Item', $this->plugin_name ),
-			'view_item'                  => __( 'View Item', $this->plugin_name ),
-			'separate_items_with_commas' => __( 'Separate items with commas', $this->plugin_name ),
-			'add_or_remove_items'        => __( 'Add or remove items', $this->plugin_name ),
-			'choose_from_most_used'      => __( 'Choose from the most used', $this->plugin_name ),
-			'popular_items'              => __( 'Popular Items', $this->plugin_name ),
-			'search_items'               => __( 'Search Items', $this->plugin_name ),
-			'not_found'                  => __( 'Not Found', $this->plugin_name ),
+			'name'                       => _x( 'Forms', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Form', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Forms', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
 		);
 
 		$rewrite = array(
@@ -205,26 +205,26 @@ class Core_Functionality_Taxonomy {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_taxonomy_location() {
+	public function taxonomy_location() {
 
 		$labels = array(
-			'name'                       => _x( 'Locations', 'Taxonomy General Name', $this->plugin_name ),
-			'singular_name'              => _x( 'Location', 'Taxonomy Singular Name', $this->plugin_name ),
-			'menu_name'                  => __( 'Locations', $this->plugin_name ),
-			'all_items'                  => __( 'All Items', $this->plugin_name ),
-			'parent_item'                => __( 'Parent Item', $this->plugin_name ),
-			'parent_item_colon'          => __( 'Parent Item:', $this->plugin_name ),
-			'new_item_name'              => __( 'New Item Name', $this->plugin_name ),
-			'add_new_item'               => __( 'Add New Item', $this->plugin_name ),
-			'edit_item'                  => __( 'Edit Item', $this->plugin_name ),
-			'update_item'                => __( 'Update Item', $this->plugin_name ),
-			'view_item'                  => __( 'View Item', $this->plugin_name ),
-			'separate_items_with_commas' => __( 'Separate items with commas', $this->plugin_name ),
-			'add_or_remove_items'        => __( 'Add or remove items', $this->plugin_name ),
-			'choose_from_most_used'      => __( 'Choose from the most used', $this->plugin_name ),
-			'popular_items'              => __( 'Popular Items', $this->plugin_name ),
-			'search_items'               => __( 'Search Items', $this->plugin_name ),
-			'not_found'                  => __( 'Not Found', $this->plugin_name ),
+			'name'                       => _x( 'Locations', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Location', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Locations', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
 		);
 
 		$rewrite = array(
@@ -255,26 +255,26 @@ class Core_Functionality_Taxonomy {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_taxonomy_row() {
+	public function taxonomy_row() {
 
 		$labels = array(
-			'name'                       => _x( 'Rows', 'Taxonomy General Name', $this->plugin_name ),
-			'singular_name'              => _x( 'Row', 'Taxonomy Singular Name', $this->plugin_name ),
-			'menu_name'                  => __( 'Rows', $this->plugin_name ),
-			'all_items'                  => __( 'All Items', $this->plugin_name ),
-			'parent_item'                => __( 'Parent Item', $this->plugin_name ),
-			'parent_item_colon'          => __( 'Parent Item:', $this->plugin_name ),
-			'new_item_name'              => __( 'New Item Name', $this->plugin_name ),
-			'add_new_item'               => __( 'Add New Item', $this->plugin_name ),
-			'edit_item'                  => __( 'Edit Item', $this->plugin_name ),
-			'update_item'                => __( 'Update Item', $this->plugin_name ),
-			'view_item'                  => __( 'View Item', $this->plugin_name ),
-			'separate_items_with_commas' => __( 'Separate items with commas', $this->plugin_name ),
-			'add_or_remove_items'        => __( 'Add or remove items', $this->plugin_name ),
-			'choose_from_most_used'      => __( 'Choose from the most used', $this->plugin_name ),
-			'popular_items'              => __( 'Popular Items', $this->plugin_name ),
-			'search_items'               => __( 'Search Items', $this->plugin_name ),
-			'not_found'                  => __( 'Not Found', $this->plugin_name ),
+			'name'                       => _x( 'Rows', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Row', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Rows', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
 		);
 
 		$rewrite = array(
@@ -304,26 +304,26 @@ class Core_Functionality_Taxonomy {
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_taxonomy_technique() {
+	public function taxonomy_technique() {
 
 		$labels = array(
-			'name'                       => _x( 'Techniques', 'Taxonomy General Name', $this->plugin_name ),
-			'singular_name'              => _x( 'Technique', 'Taxonomy Singular Name', $this->plugin_name ),
-			'menu_name'                  => __( 'Techniques', $this->plugin_name ),
-			'all_items'                  => __( 'All Items', $this->plugin_name ),
-			'parent_item'                => __( 'Parent Item', $this->plugin_name ),
-			'parent_item_colon'          => __( 'Parent Item:', $this->plugin_name ),
-			'new_item_name'              => __( 'New Item Name', $this->plugin_name ),
-			'add_new_item'               => __( 'Add New Item', $this->plugin_name ),
-			'edit_item'                  => __( 'Edit Item', $this->plugin_name ),
-			'update_item'                => __( 'Update Item', $this->plugin_name ),
-			'view_item'                  => __( 'View Item', $this->plugin_name ),
-			'separate_items_with_commas' => __( 'Separate items with commas', $this->plugin_name ),
-			'add_or_remove_items'        => __( 'Add or remove items', $this->plugin_name ),
-			'choose_from_most_used'      => __( 'Choose from the most used', $this->plugin_name ),
-			'popular_items'              => __( 'Popular Items', $this->plugin_name ),
-			'search_items'               => __( 'Search Items', $this->plugin_name ),
-			'not_found'                  => __( 'Not Found', $this->plugin_name ),
+			'name'                       => _x( 'Techniques', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Technique', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Techniques', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
 		);
 
 		$rewrite = array(
