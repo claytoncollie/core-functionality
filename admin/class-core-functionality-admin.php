@@ -560,7 +560,7 @@ class Core_Functionality_Admin {
 
 		if ( 'website' === $column_name ) {
 
-			$output .= sprintf(
+			$value .= sprintf(
 				'<a target="_blank" href="%s">%s</a>',
 				esc_url( $user_info->user_url ),
 				esc_url( $user_info->user_url )
@@ -570,14 +570,14 @@ class Core_Functionality_Admin {
 
 		if ( 'photo' === $column_name ) {
 
-			$output .= sprintf(
+			$value .= sprintf(
 				'<img src="%s" style="max-height: 100px;">',
 				esc_url( $author_avatar[0] )
 			);
 
 		}
 
-		return $output;
+		return $value;
 
 	}
 
