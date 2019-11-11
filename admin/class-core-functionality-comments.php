@@ -54,7 +54,6 @@ class Core_Functionality_Comments {
 	}
 
 	/**
-	 *
 	 * Update fields on options-comments.php
 	 *
 	 * @since    1.0.0
@@ -70,7 +69,6 @@ class Core_Functionality_Comments {
 
 
 	/**
-	 *
 	 * Disable support for comments and trackbacks in post types
 	 *
 	 * @since    1.0.0
@@ -93,12 +91,11 @@ class Core_Functionality_Comments {
 	}
 
 	/**
-	 *
 	 * Remove links/menus from the admin bar
 	 *
 	 * @since    1.0.0
 	 */
-	function remove_admin_bar_link() {
+	public function remove_admin_bar_link() {
 
 		global $wp_admin_bar;
 
@@ -108,9 +105,10 @@ class Core_Functionality_Comments {
 
 
 	/**
-	 *
 	 * Hide existing comments
 	 *
+	 * @param array $comments All comments.
+	 * @return array
 	 * @since    1.0.0
 	 */
 	public function disable_comments_hide_existing_comments( $comments ) {
@@ -121,19 +119,17 @@ class Core_Functionality_Comments {
 
 	}
 
-
 	/**
-	 *
 	 * Remove admin pages
 	 *
 	 * @since    1.0.0
 	 */
 	public function disable_comments_admin_menu() {
 
-		// Comments top level page
+		// Comments top level page.
 		remove_menu_page( 'edit-comments.php' );
 
-		// Settings page
+		// Settings page.
 		remove_submenu_page( 'options-general.php', 'options-discussion.php' );
 
 	}
@@ -141,7 +137,6 @@ class Core_Functionality_Comments {
 
 
 	/**
-	 *
 	 * Redirect any user trying to access comments page
 	 *
 	 * @since    1.0.0
@@ -150,9 +145,9 @@ class Core_Functionality_Comments {
 
 		global $pagenow;
 
-		if ( $pagenow == 'comment.php' || $pagenow === 'edit-comments.php' || $pagenow === 'options-discussion.php' ) {
+		if ( 'comment.php' === $pagenow || 'edit-comments.php' === $pagenow || 'options-discussion.php' === $pagenow ) {
 
-			wp_die( __( 'Comments are closed.', 'core-functionality' ), '', array( 'response' => 403 ) );
+			wp_die( esc_html__( 'Comments are closed.', 'core-functionality' ), '', array( 'response' => 403 ) );
 
 		}
 
@@ -161,7 +156,6 @@ class Core_Functionality_Comments {
 
 
 	/**
-	 *
 	 * Remove comments metabox from dashboard
 	 *
 	 * @since    1.0.0
@@ -173,17 +167,16 @@ class Core_Functionality_Comments {
 	}
 
 	/**
-	 *
 	 * Remove comments metabox from dashboard
 	 *
 	 * @since    1.1.0
 	 */
 	public function disable_comments_and_pings() {
 
-		// Close comments
+		// Close comments.
 		add_filter( 'comments_open', '__return_false', 20, 2 );
 
-		// Close pings
+		// Close pings.
 		add_filter( 'pings_open', '__return_false', 20, 2 );
 
 	}
@@ -191,7 +184,6 @@ class Core_Functionality_Comments {
 
 
 	/**
-	 *
 	 * Remove comments links from admin bar
 	 *
 	 * @since    1.0.0
@@ -223,7 +215,7 @@ class Core_Functionality_Comments {
 	 */
 	public function hide_dashboard_bits() {
 
-		if ( 'dashboard' == get_current_screen()->id ) {
+		if ( 'dashboard' === get_current_screen()->id ) {
 
 			echo '<script>
 				jQuery(function($){
