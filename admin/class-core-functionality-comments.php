@@ -44,13 +44,13 @@ class Core_Functionality_Comments {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param    string    $plugin_name     The name of this plugin.
-	 * @param    string    $version    		The version of this plugin.
+	 * @param    string $plugin_name     The name of this plugin.
+	 * @param    string $version         The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name 	= $plugin_name;
-		$this->version 		= $version;
+		$this->plugin_name = $plugin_name;
+		$this->version     = $version;
 
 	}
 
@@ -68,8 +68,8 @@ class Core_Functionality_Comments {
 		update_option( 'show_avatars', 'closed' );
 
 	}
-	
-	
+
+
 	/**
 	 *
 	 * Disable support for comments and trackbacks in post types
@@ -79,17 +79,16 @@ class Core_Functionality_Comments {
 	public function rc_disable_comments_post_types_support() {
 
 		$post_types = get_post_types();
-		
-		foreach ($post_types as $post_type) {
 
-			if( post_type_supports($post_type, 'comments') ) {
+		foreach ( $post_types as $post_type ) {
 
-				remove_post_type_support($post_type, 'comments');
+			if ( post_type_supports( $post_type, 'comments' ) ) {
 
-				remove_post_type_support($post_type, 'trackbacks');
+				remove_post_type_support( $post_type, 'comments' );
+
+				remove_post_type_support( $post_type, 'trackbacks' );
 
 			}
-
 		}
 
 	}
@@ -101,11 +100,11 @@ class Core_Functionality_Comments {
 	 * @since    1.0.0
 	 */
 	function rc_remove_admin_bar_link() {
-		
+
 		global $wp_admin_bar;
 
-		$wp_admin_bar->remove_menu('comments');
-		
+		$wp_admin_bar->remove_menu( 'comments' );
+
 	}
 
 
@@ -116,7 +115,7 @@ class Core_Functionality_Comments {
 	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_hide_existing_comments( $comments ) {
-		
+
 		$comments = array();
 
 		return $comments;
@@ -133,13 +132,13 @@ class Core_Functionality_Comments {
 	public function rc_disable_comments_admin_menu() {
 
 		// Comments top level page
-		remove_menu_page('edit-comments.php');
+		remove_menu_page( 'edit-comments.php' );
 
 		// Settings page
 		remove_submenu_page( 'options-general.php', 'options-discussion.php' );
 
 	}
-	
+
 
 
 	/**
@@ -149,9 +148,9 @@ class Core_Functionality_Comments {
 	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_admin_menu_redirect() {
-		
+
 		global $pagenow;
-		
+
 		if ( $pagenow == 'comment.php' || $pagenow === 'edit-comments.php' || $pagenow === 'options-discussion.php' ) {
 
 			wp_die( __( 'Comments are closed.', $this->plugin_name ), '', array( 'response' => 403 ) );
@@ -170,7 +169,7 @@ class Core_Functionality_Comments {
 	 */
 	public function rc_disable_comments_dashboard() {
 
-		remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
 
 	}
 
@@ -183,10 +182,10 @@ class Core_Functionality_Comments {
 	public function rc_disable_comments_and_pings() {
 
 		// Close comments
-		add_filter( 'comments_open', '__return_false', 20, 2);
+		add_filter( 'comments_open', '__return_false', 20, 2 );
 
 		// Close pings
-		add_filter( 'pings_open', '__return_false', 20, 2);
+		add_filter( 'pings_open', '__return_false', 20, 2 );
 
 	}
 
@@ -199,11 +198,11 @@ class Core_Functionality_Comments {
 	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_admin_bar() {
-		
+
 		if ( is_admin_bar_showing() ) {
-			
-			remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
-		
+
+			remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
+
 		}
 	}
 
@@ -213,19 +212,19 @@ class Core_Functionality_Comments {
 	 * @since    1.0.0
 	 */
 	public function rc_disable_comments_widget() {
-		
+
 		unregister_widget( 'WP_Widget_Recent_Comments' );
 
 	}
-	
+
 	/**
 	 * Hides comments link on dashboard
 	 *
 	 * @since    1.0.0
 	 */
-	public function rc_hide_dashboard_bits(){
-		
-		if( 'dashboard' == get_current_screen()->id ) {
+	public function rc_hide_dashboard_bits() {
+
+		if ( 'dashboard' == get_current_screen()->id ) {
 
 			echo '<script>
 				jQuery(function($){

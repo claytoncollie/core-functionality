@@ -42,14 +42,14 @@ class Core_Functionality_Taxonomy {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name 	= $plugin_name;
-		$this->version 		= $version;
-		
+		$this->plugin_name = $plugin_name;
+		$this->version     = $version;
+
 	}
 
 	/**
@@ -78,23 +78,23 @@ class Core_Functionality_Taxonomy {
 			'search_items'               => __( 'Search Items', $this->plugin_name ),
 			'not_found'                  => __( 'Not Found', $this->plugin_name ),
 		);
-		
+
 		$rewrite = array(
-			'slug'                       => 'column',
-			'with_front'                 => true,
-			'hierarchical'               => false,
+			'slug'         => 'column',
+			'with_front'   => true,
+			'hierarchical' => false,
 		);
 
 		$args = array(
-			'labels'                     => $labels,
-			'hierarchical'               => true,
-			'public'                     => true,
-			'show_ui'                    => true,
-			'show_admin_column'          => true,
-			'show_in_nav_menus'          => false,
-			'show_tagcloud'              => false,
-			'query_var'            		 => true,
-			'rewrite'                    => $rewrite,
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
 		);
 
 		register_taxonomy( 'rc_column', array( 'post' ), $args );
@@ -129,23 +129,23 @@ class Core_Functionality_Taxonomy {
 		);
 
 		$rewrite = array(
-			'slug'                       => 'firing',
-			'with_front'                 => true,
-			'hierarchical'               => true,
+			'slug'         => 'firing',
+			'with_front'   => true,
+			'hierarchical' => true,
 		);
 
 		$args = array(
-			'labels'                     => $labels,
-			'hierarchical'               => true,
-			'public'                     => true,
-			'show_ui'                    => true,
-			'show_admin_column'          => true,
-			'show_in_nav_menus'          => false,
-			'show_tagcloud'              => false,
-			'query_var'            		 => true,
-			'rewrite'                    => $rewrite,
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
 		);
-		
+
 		register_taxonomy( 'rc_firing', array( 'post' ), $args );
 
 	}
@@ -178,23 +178,23 @@ class Core_Functionality_Taxonomy {
 		);
 
 		$rewrite = array(
-			'slug'                       => 'form',
-			'with_front'                 => true,
-			'hierarchical'               => false,
+			'slug'         => 'form',
+			'with_front'   => true,
+			'hierarchical' => false,
 		);
 
 		$args = array(
-			'labels'                     => $labels,
-			'hierarchical'               => true,
-			'public'                     => true,
-			'show_ui'                    => true,
-			'show_admin_column'          => true,
-			'show_in_nav_menus'          => false,
-			'show_tagcloud'              => false,
-			'query_var'            		 => true,
-			'rewrite'                    => $rewrite,
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
 		);
-		
+
 		register_taxonomy( 'rc_form', array( 'post' ), $args );
 
 	}
@@ -227,23 +227,23 @@ class Core_Functionality_Taxonomy {
 		);
 
 		$rewrite = array(
-			'slug'                       => 'location',
-			'with_front'                 => true,
-			'hierarchical'               => true,
+			'slug'         => 'location',
+			'with_front'   => true,
+			'hierarchical' => true,
 		);
 
 		$args = array(
-			'labels'                     => $labels,
-			'hierarchical'               => true,
-			'public'                     => true,
-			'show_ui'                    => true,
-			'show_admin_column'          => true,
-			'show_in_nav_menus'          => false,
-			'show_tagcloud'              => false,
-			'query_var'            		 => true,
-			'rewrite'                    => $rewrite,
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
 		);
-		
+
 		register_taxonomy( 'rc_location', array( 'post' ), $args );
 
 	}
@@ -277,23 +277,23 @@ class Core_Functionality_Taxonomy {
 		);
 
 		$rewrite = array(
-			'slug'                       => 'row',
-			'with_front'                 => true,
-			'hierarchical'               => false,
+			'slug'         => 'row',
+			'with_front'   => true,
+			'hierarchical' => false,
 		);
 
 		$args = array(
-			'labels'                     => $labels,
-			'hierarchical'               => true,
-			'public'                     => true,
-			'show_ui'                    => true,
-			'show_admin_column'          => true,
-			'show_in_nav_menus'          => false,
-			'show_tagcloud'              => false,
-			'query_var'            		 => true,
-			'rewrite'                    => $rewrite,
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
 		);
-		
+
 		register_taxonomy( 'rc_row', array( 'post' ), $args );
 
 	}
@@ -324,28 +324,28 @@ class Core_Functionality_Taxonomy {
 			'search_items'               => __( 'Search Items', $this->plugin_name ),
 			'not_found'                  => __( 'Not Found', $this->plugin_name ),
 		);
-		
+
 		$rewrite = array(
-			'slug'                       => 'technique',
-			'with_front'                 => true,
-			'hierarchical'               => false,
+			'slug'         => 'technique',
+			'with_front'   => true,
+			'hierarchical' => false,
 		);
 
 		$args = array(
-			'labels'                     => $labels,
-			'hierarchical'               => true,
-			'public'                     => true,
-			'show_ui'                    => true,
-			'show_admin_column'          => true,
-			'show_in_nav_menus'          => false,
-			'show_tagcloud'              => false,
-			'query_var'            		 => true,
-			'rewrite'                    => $rewrite,
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
 		);
 
 		register_taxonomy( 'rc_technique', array( 'post' ), $args );
 
 	}
-	
-	
+
+
 }
