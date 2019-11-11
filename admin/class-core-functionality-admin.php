@@ -74,12 +74,32 @@ class Core_Functionality_Admin {
 	}
 
 	/**
-	 * Remove Advacned Custom Fields settings page from wp-admin
+	 * Change save path for Advanced Custom Fields local json files
+	 *
+	 * @param string $path Default directory.
+	 *
+	 * @return string
 	 *
 	 * @since 1.2.0
 	 */
-	public function remove_acf_settings_page() {
-		add_filter( 'acf/settings/show_admin', '__return_false' );
+	public function acf_local_json_save_location( $path ) {
+		$path = plugin_dir_path( __DIR__ ) . '/acf-json';
+		return $path;
+	}
+
+	/**
+	 * Change load path for Advannced Custom Fields local json files.
+	 *
+	 * @param string $paths Default directories.
+	 *
+	 * @return string
+	 *
+	 * @since 1.2.0
+	 */
+	public function acf_local_json_load_location( $paths ) {
+		unset( $paths[0] );
+		$paths[] = plugin_dir_path( __DIR__ ) . '/acf-json';
+		return $paths;
 	}
 
 	/**
