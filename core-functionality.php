@@ -31,34 +31,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-core-functionality-activator.php
- */
-function activate_core_functionality() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-core-functionality-activator.php';
-	Core_Functionality_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-core-functionality-deactivator.php
- */
-function deactivate_core_functionality() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-core-functionality-deactivator.php';
-	Core_Functionality_Deactivator::deactivate();
-}
-
-register_activation_hook( __FILE__, 'activate_core_functionality' );
-register_deactivation_hook( __FILE__, 'deactivate_core_functionality' );
-
-/**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-core-functionality.php';
 
-
-add_action( 'plugins_loaded', 'run_core_functionality', 10 );
 /**
  * Begins execution of the plugin.
  *
