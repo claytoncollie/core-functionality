@@ -246,7 +246,7 @@ class Core_Functionality_Admin {
 			esc_html__( 'Hi there! This is where you can access your personal profile.', 'core-functionality' ),
 			esc_html__( 'Select the Profile link on the left to change the spelling of your name, email address, website address, social media links or your profile photo.', 'core-functionality' ),
 			esc_html__( 'Need extra help or want to report a problem with the website?', 'core-functionality' ),
-			esc_html__( 'Contact the team at <a href="mailto:info@rosenfieldcollection.com">info@rosenfieldcollection.com</a>', 'core-functionality' )
+			wp_kses_post( '<a href="mailto:info@rosenfieldcollection.com">info@rosenfieldcollection.com</a>' )
 		);
 
 	}
