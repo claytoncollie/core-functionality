@@ -137,7 +137,7 @@ class Core_Functionality {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Core_Functionality_i18n();
+		$plugin_i18n = new Core_Functionality_I18n();
 
 		$plugin_i18n->set_domain( $this->get_plugin_name() );
 

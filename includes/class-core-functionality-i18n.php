@@ -24,7 +24,7 @@
  * @subpackage Core_Functionality/includes
  * @author     Clayton Collie <clayton.collie@gmail.com>
  */
-class Core_Functionality_i18n {
+class Core_Functionality_I18n {
 
 	/**
 	 * The domain specified for this plugin.
