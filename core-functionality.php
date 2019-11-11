@@ -14,8 +14,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Core Functionality
- * Plugin URI:        https://github.com/claytoncollie/Core-Functionality
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin URI:        https://github.com/claytoncollie/rosenfield-collection-plugin
+ * Description:       DO NOT REMOVE. This plugin is required for the website to work properly.
  * Version:           1.1.2
  * Author:            Clayton Collie
  * Author URI:        http://www.claytoncollie.com
