@@ -74,6 +74,15 @@ class Core_Functionality_Admin {
 	}
 
 	/**
+	 * Remove Advacned Custom Fields settings page from wp-admin
+	 *
+	 * @since 1.2.0
+	 */
+	public function remove_acf_settings_page() {
+		add_filter( 'acf/settings/show_admin', '__return_false' );
+	}
+
+	/**
 	 * Remove submenu pages for category and post tag
 	 *
 	 * @since    1.0.0
