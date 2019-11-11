@@ -8,6 +8,7 @@
  * @package    Core_Functionality
  * @subpackage Core_Functionality/admin
  */
+
 /**
  * The admin-specific functionality of the plugin.
  *
