@@ -175,8 +175,8 @@ class Core_Functionality {
 			$this->loader->add_action( 'user_contactmethods', $admin, 'modify_user_contact_methods' );
 			$this->loader->add_filter( 'manage_edit-rc_form_columns', $admin, 'form_taxonomy_column_title' );
 			$this->loader->add_filter( 'manage_rc_form_custom_column', $admin, 'form_taxonomy_column_content', 10, 3 );
-			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_RSS' );
-			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_RSS' );
+			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_rss' );
+			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
 		}
 
 		if ( isset( $comments ) ) {
