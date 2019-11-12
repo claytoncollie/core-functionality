@@ -112,6 +112,11 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-admin.php';
 
 		/**
+		 * The class responsible for defining all actions that occur related to Algolia Search.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-algolia.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-comments.php';
@@ -154,6 +159,7 @@ class Core_Functionality {
 	private function define_admin_hooks() {
 
 		$admin    = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
+		$algolia  = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
 		$comments = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
 		$taxonomy = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 
@@ -180,6 +186,17 @@ class Core_Functionality {
 			$this->loader->add_filter( 'manage_rc_form_custom_column', $admin, 'form_taxonomy_column_content', 10, 3 );
 			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
+		}
+
+		if ( isset( $algolia ) && class_exists( 'Algolia_Plugin' ) ) {
+			$this->loader->add_filter( 'algolia_user_record', $algolia, 'avatar_url', 10, 2 );
+			$this->loader->add_filter( 'algolia_post_images_sizes', $algolia, 'images_sizes' );
+			$this->loader->add_filter( 'algolia_post_types_blacklist', $algolia, 'post_types_blacklist' );
+			$this->loader->add_filter( 'algolia_taxonomies_blacklist', $algolia, 'taxonomies_blacklist' );
+			$this->loader->add_filter( 'algolia_post_shared_attributes', $algolia, 'index_attributes', 10, 2 );
+			$this->loader->add_filter( 'algolia_searchable_post_shared_attributes', $algolia, 'index_attributes', 10, 2 );
+			$this->loader->add_filter( 'algolia_posts_index_settings', $algolia, 'index_settings' );
+			$this->loader->add_filter( 'algolia_searchable_posts_index_settings', $algolia, 'index_settings' );
 		}
 
 		if ( isset( $comments ) ) {
