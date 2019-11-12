@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.1.2';
+		$this->version     = '1.2.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -188,7 +188,7 @@ class Core_Functionality {
 			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
 		}
 
-		if ( isset( $algolia ) && class_exists( 'Algolia_Plugin' ) ) {
+		if ( isset( $algolia ) ) {
 			$this->loader->add_filter( 'algolia_user_record', $algolia, 'avatar_url', 10, 2 );
 			$this->loader->add_filter( 'algolia_post_images_sizes', $algolia, 'images_sizes' );
 			$this->loader->add_filter( 'algolia_post_types_blacklist', $algolia, 'post_types_blacklist' );
