@@ -55,7 +55,7 @@ class Core_Functionality_I18n {
 	 * @since    1.0.0
 	 * @param    string $domain    The domain that represents the locale of this plugin.
 	 */
-	public function set_domain( $domain ) {
+	public function set_domain( string $domain ) {
 		$this->domain = $domain;
 	}
 

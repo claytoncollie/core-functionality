@@ -2,12 +2,20 @@
 Contributors: Clayton Collie
 Donate link: http://www.claytoncollie.com
 Requires at least: 4.6.0
-Tested up to: 4.6
-Stable tag: 4.7.5
+Tested up to: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.3.0 =
+* Add typhinting for all methods and parameters. Requires PHP 7.0 or higher.
+
+= 1.2.0 =
+* Major coding standards clean up
+* Add support for Algolia instant search
+* Add support for Advacned Custom Field local json
+
 = 1.1.2 =
 * Add permalink to RSS image
 

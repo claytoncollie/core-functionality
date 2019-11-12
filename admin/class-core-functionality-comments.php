@@ -46,7 +46,7 @@ class Core_Functionality_Comments {
 	 * @param    string $plugin_name     The name of this plugin.
 	 * @param    string $version         The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( string $plugin_name, string $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
@@ -111,7 +111,7 @@ class Core_Functionality_Comments {
 	 * @return array
 	 * @since    1.0.0
 	 */
-	public function disable_comments_hide_existing_comments( $comments ) {
+	public function disable_comments_hide_existing_comments( array $comments ) : array {
 
 		$comments = array();
 

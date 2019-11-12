@@ -46,7 +46,7 @@ class Core_Functionality_Algolia {
 	 * @param    string $plugin_name     The name of this plugin.
 	 * @param    string $version         The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( string $plugin_name, string $version ) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
@@ -63,7 +63,7 @@ class Core_Functionality_Algolia {
 	 *
 	 * @since 1.2.0
 	 */
-	public function avatar_url( $record, $item ) {
+	public function avatar_url( array $record, object $item ) : array {
 
 		$avatar_id = get_field( 'artist_photo', "user_{$item->ID}" );
 
@@ -84,7 +84,7 @@ class Core_Functionality_Algolia {
 	 *
 	 * @since 1.2.0
 	 */
-	public function images_sizes() {
+	public function images_sizes() : array {
 		return get_intermediate_image_sizes();
 	}
 
@@ -95,7 +95,7 @@ class Core_Functionality_Algolia {
 	 *
 	 * @since 1.2.0
 	 */
-	public function post_types_blacklist() {
+	public function post_types_blacklist() : array {
 		return array(
 			'nav_menu_item',
 			'amn_smtp',
@@ -125,7 +125,7 @@ class Core_Functionality_Algolia {
 	 *
 	 * @since 1.2.0
 	 */
-	public function taxonomies_blacklist() {
+	public function taxonomies_blacklist() : array {
 		return array(
 			'nav_menu',
 			'link_category',
@@ -149,7 +149,7 @@ class Core_Functionality_Algolia {
 	 *
 	 * @since 1.2.0
 	 */
-	public function index_attributes( array $attributes, $post ) {
+	public function index_attributes( array $attributes, WP_Post $post ) : array {
 
 		$prefix = '';
 		$id     = '';
@@ -183,7 +183,7 @@ class Core_Functionality_Algolia {
 	 *
 	 * @since 1.2.0
 	 */
-	public function index_settings( array $settings ) {
+	public function index_settings( array $settings ) : array {
 
 		// Remove default attributes to indexes so we can set priority.
 		unset( $settings['attributesToIndex'] );
