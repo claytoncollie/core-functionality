@@ -109,7 +109,6 @@ class Core_Functionality_Admin {
 	 */
 	public function remove_sub_menus() {
 		remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );
-		remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=post_tag' );
 	}
 
 	/**
@@ -121,7 +120,7 @@ class Core_Functionality_Admin {
 
 		global $wp_taxonomies;
 
-		$taxonomies = array( 'category', 'post_tag' );
+		$taxonomies = array( 'category' );
 
 		foreach ( $taxonomies as $taxonomy ) {
 
