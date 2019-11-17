@@ -11,7 +11,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 25,
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -19,9 +19,139 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
+            "maxlength": ""
+        },
+        {
+            "key": "field_5dd128beda178",
+            "label": "Form",
+            "name": "rc_object_form",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "rc_form",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5dd1296350720",
+            "label": "Firing",
+            "name": "rc_object_firing",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "rc_firing",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5dd1297750721",
+            "label": "Technique",
+            "name": "rc_object_technique",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "rc_technique",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5dd12a6ed642d",
+            "label": "Column",
+            "name": "rc_object_column",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "rc_column",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5dd12a88d642e",
+            "label": "Row",
+            "name": "rc_object_row",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "rc_row",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
+        },
+        {
+            "key": "field_5dd12aa9d642f",
+            "label": "Location",
+            "name": "rc_object_location",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "rc_location",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0
         },
         {
             "key": "field_5456b7e3c7992",
@@ -32,7 +162,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 25,
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -42,9 +172,7 @@
             "append": "",
             "min": 0,
             "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
+            "step": ""
         },
         {
             "key": "field_5456b7d4c7991",
@@ -55,7 +183,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 25,
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -65,9 +193,7 @@
             "append": "",
             "min": 0,
             "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
+            "step": ""
         },
         {
             "key": "field_5456b7bac7990",
@@ -78,7 +204,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 25,
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -88,9 +214,7 @@
             "append": "",
             "min": 0,
             "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
+            "step": ""
         },
         {
             "key": "field_57839aaf15c5f",
@@ -101,7 +225,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -114,11 +238,11 @@
             "label": "Purchace Price",
             "name": "rc_object_purchace_price",
             "type": "number",
-            "instructions": "Do not add $ to this field.  Only numbers and decimals.  For example, 3.45 or 4.00. Do not put $3.45.",
+            "instructions": "Only numbers and decimals. 3.45 or 4.00. Not $3.45.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "20",
                 "class": "",
                 "id": ""
             },
@@ -128,9 +252,7 @@
             "append": "",
             "min": 0,
             "max": "",
-            "step": "",
-            "readonly": 0,
-            "disabled": 0
+            "step": ""
         },
         {
             "key": "field_546d0ad42e7f0",
@@ -188,5 +310,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1573513267
+    "modified": 1573989292
 }

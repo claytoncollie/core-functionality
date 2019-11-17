@@ -96,6 +96,7 @@ class Core_Functionality_Taxonomy {
 			'show_tagcloud'     => false,
 			'query_var'         => true,
 			'rewrite'           => $rewrite,
+			'meta_box_cb' 		=> false
 		);
 
 		register_taxonomy( 'rc_column', array( 'post' ), $args );
@@ -145,6 +146,7 @@ class Core_Functionality_Taxonomy {
 			'show_tagcloud'     => false,
 			'query_var'         => true,
 			'rewrite'           => $rewrite,
+			'meta_box_cb' 		=> false
 		);
 
 		register_taxonomy( 'rc_firing', array( 'post' ), $args );
@@ -194,6 +196,7 @@ class Core_Functionality_Taxonomy {
 			'show_tagcloud'     => false,
 			'query_var'         => true,
 			'rewrite'           => $rewrite,
+			'meta_box_cb' 		=> false
 		);
 
 		register_taxonomy( 'rc_form', array( 'post' ), $args );
@@ -243,6 +246,7 @@ class Core_Functionality_Taxonomy {
 			'show_tagcloud'     => false,
 			'query_var'         => true,
 			'rewrite'           => $rewrite,
+			'meta_box_cb' 		=> false
 		);
 
 		register_taxonomy( 'rc_location', array( 'post' ), $args );
@@ -293,6 +297,7 @@ class Core_Functionality_Taxonomy {
 			'show_tagcloud'     => false,
 			'query_var'         => true,
 			'rewrite'           => $rewrite,
+			'meta_box_cb' 		=> false
 		);
 
 		register_taxonomy( 'rc_row', array( 'post' ), $args );
@@ -342,6 +347,7 @@ class Core_Functionality_Taxonomy {
 			'show_tagcloud'     => false,
 			'query_var'         => true,
 			'rewrite'           => $rewrite,
+			'meta_box_cb' 		=> false
 		);
 
 		register_taxonomy( 'rc_technique', array( 'post' ), $args );
