@@ -2,11 +2,16 @@
 Contributors: Clayton Collie
 Donate link: http://www.claytoncollie.com
 Requires at least: 4.6.0
-Tested up to: 5.2.4
+Tested up to: 5.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
+
+= 1.4.0 =
+* Enable post_tag taxonomy
+* Hide taxonomy metaboes in admin
+* Move taxonomy field into the ACF metabox
 
 = 1.3.0 =
 * Add typhinting for all methods and parameters. Requires PHP 7.0 or higher.
