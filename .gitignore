@@ -1,0 +1,16 @@
+# Ignore OS generated files.
+.DS_Store
+
+# Ignore node_modules.
+node_modules
+
+# Ignore auto-generated lock files.
+composer.lock
+package-lock.json
+yarn.lock
+
+# Ignore editor files.
+.idea
+
+# Dev packages
+vendor
