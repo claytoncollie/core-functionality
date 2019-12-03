@@ -1,0 +1,22 @@
+{
+  "name": "core-functionality",
+  "version": "1.4.0",
+  "description": "Must use plugin for the Rosenfield Collection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claytoncollie/rosenfield-collection-plugin.git"
+  },
+  "author": "Clayton Collie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/claytoncollie/rosenfield-collection-plugin/issues"
+  },
+  "homepage": "https://github.com/claytoncollie/rosenfield-collection-plugin#readme",
+  "dependencies": {
+    "instantsearch.js": "^4.0.0"
+  }
+}

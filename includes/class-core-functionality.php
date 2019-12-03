@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.4.0';
+		$this->version     = '1.5.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -197,6 +197,8 @@ class Core_Functionality {
 			$this->loader->add_filter( 'algolia_searchable_post_shared_attributes', $algolia, 'index_attributes', 10, 2 );
 			$this->loader->add_filter( 'algolia_posts_index_settings', $algolia, 'index_settings' );
 			$this->loader->add_filter( 'algolia_searchable_posts_index_settings', $algolia, 'index_settings' );
+			$this->loader->add_filter( 'register_post_type_args', $algolia, 'exclude_from_search', 10, 2 );
+			$this->loader->add_action( 'wp_enqueue_scripts', $algolia, 'register_scripts', 12 );
 		}
 
 		if ( isset( $comments ) ) {

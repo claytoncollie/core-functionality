@@ -136,6 +136,7 @@ class Core_Functionality_Algolia {
 			'rc_technique',
 			'rc_form',
 			'rc_firing',
+			'post_tag',
 		);
 	}
 
@@ -185,19 +186,57 @@ class Core_Functionality_Algolia {
 	 */
 	public function index_settings( array $settings ) : array {
 
-		// Remove default attributes to indexes so we can set priority.
-		unset( $settings['attributesToIndex'] );
-
-		// Build our own attributes.
-		$settings['attributesToIndex'] = array(
-			'unordered(post_title)',
-			'unordered(rc_id)',
-			'unordered(post_author.display_name)',
-			'unordered(taxonomies)',
-			'unordered(taxonomies_hierarchical)',
+		$settings = array(
+			'attributesToIndex'     => array(
+				'unordered(post_title)',
+				'unordered(rc_id)',
+				'unordered(post_author.display_name)',
+				'unordered(taxonomies)',
+			),
+			'attributesForFaceting' => array(
+				'searchable(post_author.display_name)',
+				'searchable(taxonomies)',
+			),
 		);
 
 		return $settings;
+
+	}
+
+	/**
+	 * Exclude certain post types from search results
+	 *
+	 * @param array  $args Arguments.
+	 * @param string $post_type Post type.
+	 *
+	 * @return array
+	 *
+	 * @since 1.5.0
+	 */
+	public function exclude_from_search( array $args, string $post_type ) : array {
+
+		if ( 'page' === $post_type ) {
+			$args['exclude_from_search'] = true;
+		}
+
+		return $args;
+
+	}
+
+	/**
+	 * Register and unregister assets.
+	 *
+	 * @return void
+	 *
+	 * @since 1.5.0
+	 */
+	public function register_scripts() {
+
+		// Remove instantsearch version 1 that comes bundled with plugin.
+		wp_deregister_script( 'algolia-instantsearch' );
+
+		// Add instantsearch version 4 so we can use new widgets.
+		wp_register_script( 'algolia-instantsearch', plugin_dir_url( __DIR__ ) . 'node_modules/instantsearch.js/dist/instantsearch.production.min.js', array( 'jquery', 'underscore', 'wp-util' ), $this->version, false );
 
 	}
 
