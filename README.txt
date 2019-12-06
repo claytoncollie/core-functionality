@@ -8,6 +8,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.6.1 =
+* Require certain ACF fields
+
 = 1.6.0 =
 * Save post_name as permalink
 * Replace instantsearch.js version 1 with version 4

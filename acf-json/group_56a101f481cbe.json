@@ -8,7 +8,7 @@
             "name": "rc_form_object_prefix",
             "type": "select",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -34,11 +34,9 @@
             "allow_null": 1,
             "multiple": 0,
             "ui": 0,
+            "return_format": "value",
             "ajax": 0,
-            "placeholder": "",
-            "disabled": 0,
-            "readonly": 0,
-            "return_format": "value"
+            "placeholder": ""
         }
     ],
     "location": [
@@ -58,5 +56,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1573513260
+    "modified": 1575648805
 }

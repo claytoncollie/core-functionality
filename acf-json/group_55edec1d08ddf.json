@@ -8,7 +8,7 @@
             "name": "object_id",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "25",
@@ -27,7 +27,7 @@
             "name": "rc_object_form",
             "type": "taxonomy",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "25",
@@ -310,5 +310,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1575647803
+    "modified": 1575648786
 }
