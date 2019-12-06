@@ -687,4 +687,54 @@ class Core_Functionality_Admin {
 
 	}
 
+	/**
+	 * Write the post name to use custom field data and the taxonomt term meta.
+	 *
+	 * @param string $post_id Post ID.
+	 * @return void
+	 * @since 1.6.0
+	 */
+	public function field_as_post_name( string $post_id ) {
+
+		$object_id = get_field( 'object_id', $post_id );
+
+		$prefix = $this->get_taxonomy_term_prefix( $post_id );
+
+		if ( ! empty( $object_id ) && ! empty( $prefix ) ) {
+
+			wp_update_post(
+				array(
+					'post_name' => $prefix . $object_id,
+				)
+			);
+
+		}
+
+	}
+
+	/**
+	 * Returns the prefix for a taxonomy term.
+	 *
+	 * @param string $post_id Post ID.
+	 * @return string
+	 * @since 1.6.0
+	 */
+	public function get_taxonomy_term_prefix( string $post_id ) : string {
+
+		$prefix = '';
+		$terms  = get_the_terms( $post_id, 'rc_form' );
+
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$term_id = $term->term_id;
+			}
+		}
+
+		if ( ! empty( $term_id ) ) {
+			$prefix = get_term_meta( $term_id, 'rc_form_object_prefix', true );
+		}
+
+		return $prefix;
+	}
+
 }

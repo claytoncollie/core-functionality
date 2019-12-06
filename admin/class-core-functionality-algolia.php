@@ -236,7 +236,7 @@ class Core_Functionality_Algolia {
 		wp_deregister_script( 'algolia-instantsearch' );
 
 		// Add instantsearch version 4 so we can use new widgets.
-		wp_register_script( 'algolia-instantsearch', plugin_dir_url( __DIR__ ) . 'node_modules/instantsearch.js/dist/instantsearch.production.min.js', array( 'jquery', 'underscore', 'wp-util' ), $this->version, false );
+		wp_register_script( 'algolia-instantsearch', plugin_dir_url( __DIR__ ) . 'assets/js/instantsearch.production.min.js', array( 'jquery', 'underscore', 'wp-util' ), $this->version, false );
 
 	}
 
