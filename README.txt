@@ -8,6 +8,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.6.2 =
+* Add missing post ID to save_post permalink as object ID method
+* Sanitize values going into database on save_post method
+
 = 1.6.1 =
 * Require certain ACF fields
 

@@ -704,7 +704,8 @@ class Core_Functionality_Admin {
 
 			wp_update_post(
 				array(
-					'post_name' => $prefix . $object_id,
+					'ID' 		=> absint( $post_id ),
+					'post_name' => esc_html( $prefix . $object_id ),
 				)
 			);
 
