@@ -353,7 +353,16 @@ class Core_Functionality_Admin {
 
 			if ( has_post_thumbnail( $post_id ) ) {
 
-				the_post_thumbnail( 'thumbnail' );
+				printf( '<a href="%s">%s</a>',
+					get_edit_post_link( $post_id ),
+					get_the_post_thumbnail( 
+						$post_id, 
+						array(
+							75,
+							75
+						)
+					)
+				);
 
 			}
 		}
