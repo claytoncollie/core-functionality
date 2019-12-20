@@ -231,6 +231,18 @@ class Core_Functionality_Admin {
 			array( $this, 'dashboard_help' )
 		);
 
+		wp_add_dashboard_widget(
+			'custom_gallery_images_widget',
+			esc_html__( 'Pieces without gallery images', 'core-functionality' ),
+			array( $this, 'dashboard_gallery_images' )
+		);
+
+		wp_add_dashboard_widget(
+			'custom_object_id_widget',
+			esc_html__( 'Pieces without an object ID', 'core-functionality' ),
+			array( $this, 'dashboard_object_id' )
+		);
+
 	}
 
 	/**
@@ -249,6 +261,84 @@ class Core_Functionality_Admin {
 		);
 
 	}
+
+	/**
+	 * Display in dashboard widget the pieces without gallery images
+	 *
+	 * @since 1.6.5
+	 */
+	public function dashboard_gallery_images() {
+
+		$query = new WP_Query(
+			array(
+				'post_type'   => 'post',
+				'post_status' => 'publish',
+				'nopaging'    => true,
+			)
+		);
+
+		if ( $query->have_posts() ) {
+			echo '<ul>';
+			while ( $query->have_posts() ) {
+				$query->the_post();
+
+				$object_id = get_field( 'object_id', get_the_ID() );
+				$images    = get_field( 'images', get_the_ID() );
+
+				if ( empty( $images ) ) {
+					printf(
+						'<li><a href="%s" target="_blank">%s: %s%s</a></li>',
+						esc_html( get_edit_post_link( get_the_ID() ) ),
+						esc_html( get_the_title() ),
+						esc_html( $this->get_taxonomy_term_prefix( get_the_ID() ) ),
+						esc_html( $object_id )
+					);
+
+				}
+			}
+			echo '</ul>';
+		}
+		wp_reset_postdata();
+
+	}
+
+	/**
+	 * Display in dashboard widget the pieces without gallery images
+	 *
+	 * @since 1.6.5
+	 */
+	public function dashboard_object_id() {
+
+		$query = new WP_Query(
+			array(
+				'post_type'   => 'post',
+				'post_status' => 'publish',
+				'nopaging'    => true,
+			)
+		);
+
+		if ( $query->have_posts() ) {
+			echo '<ul>';
+			while ( $query->have_posts() ) {
+				$query->the_post();
+
+				$object_id = get_field( 'object_id', get_the_ID() );
+
+				if ( empty( $object_id ) ) {
+					printf(
+						'<li><a href="%s" target="_blank">%s</a></li>',
+						esc_html( get_edit_post_link( get_the_ID() ) ),
+						esc_html( get_the_title() )
+					);
+
+				}
+			}
+			echo '</ul>';
+		}
+		wp_reset_postdata();
+
+	}
+
 
 	/**
 	 * Remove menus for non-administrators
@@ -353,13 +443,14 @@ class Core_Functionality_Admin {
 
 			if ( has_post_thumbnail( $post_id ) ) {
 
-				printf( '<a href="%s">%s</a>',
-					get_edit_post_link( $post_id ),
-					get_the_post_thumbnail( 
-						$post_id, 
+				printf(
+					'<a href="%s">%s</a>',
+					esc_url( get_edit_post_link( $post_id ) ),
+					get_the_post_thumbnail(
+						$post_id,
 						array(
 							100,
-							100
+							100,
 						)
 					)
 				);
@@ -713,7 +804,7 @@ class Core_Functionality_Admin {
 
 			wp_update_post(
 				array(
-					'ID' 		=> absint( $post_id ),
+					'ID'        => absint( $post_id ),
 					'post_name' => esc_html( $prefix . $object_id ),
 				)
 			);
