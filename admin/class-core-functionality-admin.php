@@ -358,8 +358,8 @@ class Core_Functionality_Admin {
 					get_the_post_thumbnail( 
 						$post_id, 
 						array(
-							75,
-							75
+							100,
+							100
 						)
 					)
 				);
