@@ -15,15 +15,15 @@
  * Plugin Name:       Core Functionality
  * Plugin URI:        https://github.com/claytoncollie/rosenfield-collection-plugin
  * Description:       DO NOT REMOVE. This plugin is required for the website to work properly.
- * Version:           1.7.1
+ * Version:           1.7.3
  * Author:            Clayton Collie
  * Author URI:        http://www.claytoncollie.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       core-functionality
  * Domain Path:       /languages
- * GitHub Plugin URI: claytoncollie/rosenfield-collection-plugin
- * GitHub Plugin URI: https://github.com/claytoncollie/rosenfield-collection-plugin
+ * GitHub Plugin URI: claytoncollie/core-functionality
+ * GitHub Plugin URI: https://github.com/claytoncollie/core-functionality
  */
 
 // If this file is called directly, abort.
