@@ -354,5 +354,56 @@ class Core_Functionality_Taxonomy {
 
 	}
 
+	/**
+	 * Taxonomy - Result
+	 *
+	 * @since    1.9.0
+	 */
+	public function taxonomy_result() {
+
+		$labels = array(
+			'name'                       => _x( 'Results', 'Taxonomy General Name', 'core-functionality' ),
+			'singular_name'              => _x( 'Result', 'Taxonomy Singular Name', 'core-functionality' ),
+			'menu_name'                  => __( 'Results', 'core-functionality' ),
+			'all_items'                  => __( 'All Items', 'core-functionality' ),
+			'parent_item'                => __( 'Parent Item', 'core-functionality' ),
+			'parent_item_colon'          => __( 'Parent Item:', 'core-functionality' ),
+			'new_item_name'              => __( 'New Item Name', 'core-functionality' ),
+			'add_new_item'               => __( 'Add New Item', 'core-functionality' ),
+			'edit_item'                  => __( 'Edit Item', 'core-functionality' ),
+			'update_item'                => __( 'Update Item', 'core-functionality' ),
+			'view_item'                  => __( 'View Item', 'core-functionality' ),
+			'separate_items_with_commas' => __( 'Separate items with commas', 'core-functionality' ),
+			'add_or_remove_items'        => __( 'Add or remove items', 'core-functionality' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'core-functionality' ),
+			'popular_items'              => __( 'Popular Items', 'core-functionality' ),
+			'search_items'               => __( 'Search Items', 'core-functionality' ),
+			'not_found'                  => __( 'Not Found', 'core-functionality' ),
+		);
+
+		$rewrite = array(
+			'slug'         => 'result',
+			'with_front'   => true,
+			'hierarchical' => false,
+		);
+
+		$args = array(
+			'labels'            => $labels,
+			'hierarchical'      => false,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+			'show_tagcloud'     => false,
+			'query_var'         => true,
+			'rewrite'           => $rewrite,
+			'meta_box_cb'       => false,
+		);
+
+		register_taxonomy( 'rc_result', array( 'post' ), $args );
+
+	}
+
+
 
 }

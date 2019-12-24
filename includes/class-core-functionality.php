@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.8.0';
+		$this->version     = '1.9.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -201,6 +201,7 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_location' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_row' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_technique' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_result' );
 		}
 
 		if ( isset( $checkin ) ) {
