@@ -54,6 +54,30 @@ class Core_Functionality_Admin {
 	}
 
 	/**
+	 * Define plugins that can take automatic updates.
+	 *
+	 * @param bool   $update Should we update.
+	 * @param object $item Items to update.
+	 *
+	 * @return bool
+	 *
+	 * @since 1.8.0
+	 */
+	public function plugins_to_auto_update( bool $update, object $item ) : bool {
+
+		$plugins = array(
+			'core-functionality',
+		);
+
+		if ( in_array( $item->slug, $plugins, true ) ) {
+			return true;
+		}
+
+		return false;
+
+	}
+
+	/**
 	 * Enabling the Gutenberg editor all post types except post.
 	 *
 	 * @param bool   $can_edit  Whether to use the Gutenberg editor.

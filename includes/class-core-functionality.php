@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.7.4';
+		$this->version     = '1.8.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -141,6 +141,7 @@ class Core_Functionality {
 		$checkin  = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
+			$this->loader->add_filter( 'auto_update_plugin', $admin, 'plugins_to_auto_update', 10, 2 );
 			$this->loader->add_filter( 'use_block_editor_for_post_type', $admin, 'gutenberg_support', 10, 2 );
 			$this->loader->add_filter( 'acf/settings/save_json', $admin, 'acf_local_json_save_location' );
 			$this->loader->add_filter( 'acf/settings/load_json', $admin, 'acf_local_json_load_location' );
