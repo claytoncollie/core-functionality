@@ -94,37 +94,13 @@ class Core_Functionality {
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-core-functionality-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-core-functionality-i18n.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur related to Algolia Search.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-algolia.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-comments.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-taxonomy.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-checkin.php';
 
 		$this->loader = new Core_Functionality_Loader();
 
@@ -162,6 +138,7 @@ class Core_Functionality {
 		$algolia  = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
 		$comments = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
 		$taxonomy = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
+		$checkin  = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
 			$this->loader->add_filter( 'use_block_editor_for_post_type', $admin, 'gutenberg_support', 10, 2 );
@@ -223,6 +200,12 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_location' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_row' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_technique' );
+		}
+
+		if ( isset( $checkin ) ) {
+			$this->loader->add_filter( 'gform_pre_render_5', $checkin, 'populate_user_list' );
+			$this->loader->add_action( 'gform_user_registered', $checkin, 'add_custom_user_meta', 10, 4 );
+			$this->loader->add_filter( 'gform_after_submission_5', $checkin, 'set_post_fields', 10, 2 );
 		}
 
 	}
