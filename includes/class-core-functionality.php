@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.6.5';
+		$this->version     = '1.7.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -203,9 +203,9 @@ class Core_Functionality {
 		}
 
 		if ( isset( $checkin ) ) {
-			$this->loader->add_filter( 'gform_pre_render_5', $checkin, 'populate_user_list' );
+			$this->loader->add_filter( 'gform_pre_render_6', $checkin, 'populate_user_list' );
 			$this->loader->add_action( 'gform_user_registered', $checkin, 'add_custom_user_meta', 10, 4 );
-			$this->loader->add_filter( 'gform_after_submission_5', $checkin, 'set_post_fields', 10, 2 );
+			$this->loader->add_filter( 'gform_after_submission_6', $checkin, 'set_post_fields', 10, 2 );
 		}
 
 	}
