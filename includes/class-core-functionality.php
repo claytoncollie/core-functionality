@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.9.0';
+		$this->version     = '1.10.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -101,6 +101,7 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-comments.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-taxonomy.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-checkin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-post-status.php';
 
 		$this->loader = new Core_Functionality_Loader();
 
@@ -139,6 +140,7 @@ class Core_Functionality {
 		$comments = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
 		$taxonomy = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 		$checkin  = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
+		$status   = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
 			$this->loader->add_filter( 'auto_update_plugin', $admin, 'plugins_to_auto_update', 10, 2 );
@@ -208,6 +210,12 @@ class Core_Functionality {
 			$this->loader->add_filter( 'gform_pre_render_6', $checkin, 'populate_user_list' );
 			$this->loader->add_action( 'gform_user_registered', $checkin, 'add_custom_user_meta', 10, 4 );
 			$this->loader->add_filter( 'gform_after_submission_6', $checkin, 'set_post_fields', 10, 2 );
+		}
+
+		if ( isset( $status ) ) {
+			$this->loader->add_action( 'init', $status, 'register_post_status' );
+			$this->loader->add_action( 'admin_footer-post.php', $status, 'append_to_post_status_dropdown' );
+			$this->loader->add_filter( 'display_post_states', $status, 'update_post_status' );
 		}
 
 	}
