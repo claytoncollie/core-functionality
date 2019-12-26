@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.10.0';
+		$this->version     = '1.11.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -102,6 +102,7 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-taxonomy.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-checkin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-post-status.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-dashboards.php';
 
 		$this->loader = new Core_Functionality_Loader();
 
@@ -135,12 +136,13 @@ class Core_Functionality {
 	 */
 	private function define_admin_hooks() {
 
-		$admin    = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
-		$algolia  = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
-		$comments = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
-		$taxonomy = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
-		$checkin  = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
-		$status   = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
+		$admin      = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
+		$algolia    = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
+		$comments   = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
+		$taxonomy   = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
+		$checkin    = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
+		$status     = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
+		$dashboards = new Core_Functionality_Dashboards( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
 			$this->loader->add_filter( 'auto_update_plugin', $admin, 'plugins_to_auto_update', 10, 2 );
@@ -151,8 +153,6 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $admin, 'unregister_taxonomy' );
 			$this->loader->add_action( 'init', $admin, 'clean_header' );
 			$this->loader->add_filter( 'xmlrpc_methods', $admin, 'remove_xmlrpc_pingback_ping' );
-			$this->loader->add_action( 'admin_init', $admin, 'remove_dashboard_widgets' );
-			$this->loader->add_action( 'wp_dashboard_setup', $admin, 'custom_dashboard_widgets' );
 			$this->loader->add_action( 'admin_menu', $admin, 'remove_admin_menus' );
 			$this->loader->add_action( 'manage_posts_columns', $admin, 'post_column_titles' );
 			$this->loader->add_action( 'manage_posts_custom_column', $admin, 'post_column_content', 10, 2 );
@@ -216,6 +216,12 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $status, 'register_post_status' );
 			$this->loader->add_action( 'admin_footer-post.php', $status, 'append_to_post_status_dropdown' );
 			$this->loader->add_filter( 'display_post_states', $status, 'update_post_status' );
+		}
+
+		if ( isset( $dashboards ) ) {
+			$this->loader->add_action( 'admin_init', $dashboards, 'remove_dashboard_widgets' );
+			$this->loader->add_action( 'admin_init', $dashboards, 'set_dashboard_meta_order' );
+			$this->loader->add_action( 'wp_dashboard_setup', $dashboards, 'custom_dashboard_widgets' );
 		}
 
 	}
