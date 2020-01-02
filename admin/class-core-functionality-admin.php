@@ -226,12 +226,10 @@ class Core_Functionality_Admin {
 			global $menu;
 
 			$restricted = array(
-				esc_html__( 'Media', 'core-functionality' ),
 				esc_html__( 'Links', 'core-functionality' ),
 				esc_html__( 'Appearance', 'core-functionality' ),
 				esc_html__( 'Pages', 'core-functionality' ),
 				esc_html__( 'Tools', 'core-functionality' ),
-				esc_html__( 'Posts', 'core-functionality' ),
 				esc_html__( 'Settings', 'core-functionality' ),
 				esc_html__( 'Comments', 'core-functionality' ),
 				esc_html__( 'Plugins', 'core-functionality' ),
@@ -277,6 +275,7 @@ class Core_Functionality_Admin {
 		unset( $defaults['taxonomy-rc_row'] );
 		unset( $defaults['taxonomy-rc_column'] );
 		unset( $defaults['taxonomy-rc_location'] );
+		unset( $defaults['taxonomy-rc_result'] );
 
 		// Add columns with new order.
 		$defaults['featured_image']        = esc_html__( 'Featured Image', 'core-functionality' );
@@ -291,6 +290,7 @@ class Core_Functionality_Admin {
 		$defaults['taxonomy-rc_row']       = esc_html__( 'Row', 'core-functionality' );
 		$defaults['taxonomy-rc_column']    = esc_html__( 'Column', 'core-functionality' );
 		$defaults['taxonomy-rc_location']  = esc_html__( 'Location', 'core-functionality' );
+		$defaults['taxonomy-rc_result']    = esc_html__( 'Result', 'core-functionality' );
 		$defaults['height']                = esc_html__( 'Height', 'core-functionality' );
 		$defaults['width']                 = esc_html__( 'Width', 'core-functionality' );
 		$defaults['length']                = esc_html__( 'Length', 'core-functionality' );
@@ -445,7 +445,7 @@ class Core_Functionality_Admin {
 		global $typenow;
 
 		// An array of all the taxonomyies you want to display. Use the taxonomy name or slug.
-		$taxonomies = array( 'rc_form', 'rc_firing', 'rc_technique', 'rc_row', 'rc_column', 'rc_location' );
+		$taxonomies = array( 'rc_form', 'rc_firing', 'rc_technique', 'rc_row', 'rc_column', 'rc_location', 'rc_result' );
 
 		// Must set this to the post type you want the filter(s) displayed on.
 		if ( 'post' === $typenow ) {
