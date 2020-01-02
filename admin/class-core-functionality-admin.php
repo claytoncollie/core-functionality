@@ -220,7 +220,7 @@ class Core_Functionality_Admin {
 	public function remove_admin_menus() {
 
 		$user = wp_get_current_user();
-
+		
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 
 			global $menu;
@@ -228,7 +228,6 @@ class Core_Functionality_Admin {
 			$restricted = array(
 				esc_html__( 'Links', 'core-functionality' ),
 				esc_html__( 'Appearance', 'core-functionality' ),
-				esc_html__( 'Pages', 'core-functionality' ),
 				esc_html__( 'Tools', 'core-functionality' ),
 				esc_html__( 'Settings', 'core-functionality' ),
 				esc_html__( 'Comments', 'core-functionality' ),
