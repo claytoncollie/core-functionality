@@ -220,7 +220,7 @@ class Core_Functionality_Admin {
 	public function remove_admin_menus() {
 
 		$user = wp_get_current_user();
-		
+
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 
 			global $menu;
