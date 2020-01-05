@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.11.2';
+		$this->version     = '1.12.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -103,6 +103,7 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-checkin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-post-status.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-dashboards.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-html2jpg.php';
 
 		$this->loader = new Core_Functionality_Loader();
 
@@ -143,6 +144,7 @@ class Core_Functionality {
 		$checkin    = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
 		$status     = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
 		$dashboards = new Core_Functionality_Dashboards( $this->get_plugin_name(), $this->get_version() );
+		$html2jpg   = new Core_Functionality_Html2Jpg( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
 			$this->loader->add_filter( 'auto_update_plugin', $admin, 'plugins_to_auto_update', 10, 2 );
@@ -222,6 +224,11 @@ class Core_Functionality {
 			$this->loader->add_action( 'admin_init', $dashboards, 'remove_dashboard_widgets' );
 			$this->loader->add_action( 'admin_init', $dashboards, 'set_dashboard_meta_order' );
 			$this->loader->add_action( 'wp_dashboard_setup', $dashboards, 'custom_dashboard_widgets' );
+		}
+
+		if ( isset( $html2jpg ) ) {
+			$this->loader->add_action( 'init', $html2jpg, 'add_rewrite_endpoint' );
+			$this->loader->add_action( 'wp', $html2jpg, 'save_image' );
 		}
 
 	}
