@@ -137,6 +137,7 @@ class Core_Functionality_Algolia {
 			'rc_form',
 			'rc_firing',
 			'post_tag',
+			'rc_result',
 		);
 	}
 
