@@ -203,7 +203,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -217,6 +217,23 @@
             "multiple": 0
         },
         {
+            "key": "field_5e14b7426c617",
+            "label": "Purchae Date",
+            "name": "rc_object_purchae_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y",
+            "return_format": "m\/d\/Y",
+            "first_day": 0
+        },
+        {
             "key": "field_57839ad815c60",
             "label": "Purchace Price",
             "name": "rc_object_purchace_price",
@@ -225,7 +242,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -293,5 +310,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1578288383
+    "modified": 1578415993
 }
