@@ -169,14 +169,20 @@ class Core_Functionality_Checkin {
 			}
 		}
 
-		// Set Post Author, if existing author is chosen.
+		// Set post term.
 		if ( isset( $entry[14] ) && ! empty( $entry[14] ) ) {
 
-			$term_id = wp_insert_term( $entry[14], 'rc_location' );
+			$insert_term = wp_insert_term( $entry[14], 'rc_location' );
+
+			if ( is_wp_error( $insert_term ) ) {
+				$term_id = $insert_term->error_data['term_exists'];
+			} else {
+				$term_id = $insert_term['term_id'];
+			}
 
 			if ( ! empty( $term_id ) ) {
-
-				$term = get_term( $term_id['term_id'], 'rc_location', ARRAY_A );
+				
+				$term = get_term( $term_id, 'rc_location', ARRAY_A );
 
 				if ( ! empty( $term ) ) {
 					wp_set_post_terms( $post->ID, $term['name'], 'rc_location', false );

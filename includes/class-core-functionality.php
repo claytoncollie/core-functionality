@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.12.4';
+		$this->version     = '1.12.5';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -202,7 +202,7 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_column' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_firing' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_form' );
-			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_location' );
+			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_location', 0 );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_row' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_technique' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_result' );
