@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.12.5';
+		$this->version     = '1.13.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -99,6 +99,7 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-admin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-algolia.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-comments.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-columns.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-taxonomy.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-checkin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-post-status.php';
@@ -140,6 +141,7 @@ class Core_Functionality {
 		$admin      = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
 		$algolia    = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
 		$comments   = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
+		$columns    = new Core_Functionality_Columns( $this->get_plugin_name(), $this->get_version() );
 		$taxonomy   = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
 		$checkin    = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
 		$status     = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
@@ -156,16 +158,9 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $admin, 'clean_header' );
 			$this->loader->add_filter( 'xmlrpc_methods', $admin, 'remove_xmlrpc_pingback_ping' );
 			$this->loader->add_action( 'admin_menu', $admin, 'remove_admin_menus' );
-			$this->loader->add_action( 'manage_posts_columns', $admin, 'post_column_titles' );
-			$this->loader->add_action( 'manage_posts_custom_column', $admin, 'post_column_content', 10, 2 );
-			$this->loader->add_filter( 'manage_edit-post_sortable_columns', $admin, 'post_id_column_sortable' );
 			$this->loader->add_action( 'load-edit.php', $admin, 'no_category_dropdown' );
 			$this->loader->add_action( 'restrict_manage_posts', $admin, 'add_taxonomy_filters_form' );
-			$this->loader->add_filter( 'manage_users_columns', $admin, 'user_column_titles' );
-			$this->loader->add_action( 'manage_users_custom_column', $admin, 'user_column_content', 10, 3 );
 			$this->loader->add_action( 'user_contactmethods', $admin, 'modify_user_contact_methods' );
-			$this->loader->add_filter( 'manage_edit-rc_form_columns', $admin, 'form_taxonomy_column_title' );
-			$this->loader->add_filter( 'manage_rc_form_custom_column', $admin, 'form_taxonomy_column_content', 10, 3 );
 			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'acf/save_post', $admin, 'field_as_post_name', 20 );
@@ -196,6 +191,16 @@ class Core_Functionality {
 			$this->loader->add_action( 'init', $comments, 'disable_comments_and_pings' );
 			$this->loader->add_action( 'widgets_init', $comments, 'disable_comments_widget' );
 			$this->loader->add_action( 'admin_head', $comments, 'hide_dashboard_bits' );
+		}
+
+		if ( isset( $columns ) ) {
+			$this->loader->add_action( 'manage_posts_columns', $columns, 'post_column_titles' );
+			$this->loader->add_action( 'manage_posts_custom_column', $columns, 'post_column_content', 10, 2 );
+			$this->loader->add_filter( 'manage_edit-post_sortable_columns', $columns, 'post_id_column_sortable' );
+			$this->loader->add_filter( 'manage_users_columns', $columns, 'user_column_titles' );
+			$this->loader->add_action( 'manage_users_custom_column', $columns, 'user_column_content', 10, 3 );
+			$this->loader->add_filter( 'manage_edit-rc_form_columns', $columns, 'form_taxonomy_column_title' );
+			$this->loader->add_filter( 'manage_rc_form_custom_column', $columns, 'form_taxonomy_column_content', 10, 3 );
 		}
 
 		if ( isset( $taxonomy ) ) {
