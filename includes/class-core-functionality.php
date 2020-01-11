@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.14.1';
+		$this->version     = '1.14.3';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -249,6 +249,8 @@ class Core_Functionality {
 		}
 
 		if ( isset( $user_profile ) ) {
+			$this->loader->add_action( 'admin_head', $user_profile, 'admin_color_scheme' );
+			$this->loader->add_action( 'init', $user_profile, 'remove_admin_color_scheme_picker' );
 			$this->loader->add_action( 'genesis_setup', $user_profile, 'genesis_clean_up' );
 			$this->loader->add_filter( 'user_contactmethods', $user_profile, 'modify_user_contact_methods', 99, 1 );
 			$this->loader->add_action( 'acf/save_post', $user_profile, 'update_user_meta_artist_filter', 20 );
