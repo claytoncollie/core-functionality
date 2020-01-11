@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.14.0';
+		$this->version     = '1.14.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
