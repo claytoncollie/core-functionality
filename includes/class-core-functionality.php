@@ -105,6 +105,7 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-post-status.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-dashboards.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-html2jpg.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-user-populate.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-user-profile.php';
 
 		$this->loader = new Core_Functionality_Loader();
@@ -238,6 +239,14 @@ class Core_Functionality {
 			$this->loader->add_action( 'wp', $html2jpg, 'save_image' );
 		}
 
+		if ( isset( $user_pop ) ) {
+			// Gravity form custom dropdown and routing.
+			$this->loader->add_filter( 'gform_pre_render_1', $user_pop, 'populate_user_email_list' );
+			// Set user id for use after submission.
+			$this->loader->add_action( 'gform_user_registered', $user_pop, 'add_custom_user_meta', 10, 4 );
+			// Set post author and/or gallery images.
+			$this->loader->add_filter( 'gform_after_submission_1', $user_pop, 'set_post_fields', 10, 2 );
+		}
 
 		if ( isset( $user_profile ) ) {
 			$this->loader->add_action( 'user_contactmethods', $user_profile, 'modify_user_contact_methods' );
