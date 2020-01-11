@@ -53,6 +53,13 @@ class Core_Functionality_User_Profile {
 
 	}
 
+	/**
+	 * Clean up Genesus filed from user profile page.
+	 *
+	 * @return void
+	 *
+	 * @since 1.14.0
+	 */
 	public function genesis_clean_up() {
 		// User profile options.
 		remove_action( 'show_user_profile', 'genesis_user_options_fields' );
@@ -110,8 +117,8 @@ class Core_Functionality_User_Profile {
 
 		$field = get_field( 'artist_filter', $user_id );
 
-		if ( empty( $field ) ) { 
-			
+		if ( empty( $field ) ) {
+
 			$user_id = str_replace( 'user_', '', $user_id );
 
 			$name = get_user_meta( $user_id, 'last_name', true );
