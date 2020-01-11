@@ -241,6 +241,7 @@ class Core_Functionality_Columns {
 
 		$columns['photo']   = esc_html__( 'Photo', 'core-functionality' );
 		$columns['website'] = esc_html__( 'Website', 'core-functionality' );
+		$columns['letter']  = esc_html__( 'Filter', 'core-functionality' );
 
 		return $columns;
 	}
@@ -259,9 +260,16 @@ class Core_Functionality_Columns {
 	public function user_column_content( string $value, string $column_name, string $user_id ) : string {
 
 		$user_info     = get_userdata( $user_id );
+		$letter 	   = get_field( 'artist_filter', 'user_' . $user_id );
 		$attachment_id = get_field( 'artist_photo', 'user_' . $user_id );
 		$author_avatar = wp_get_attachment_image_src( $attachment_id, 'artist-image' );
 
+		if ( 'letter' === $column_name ) {
+
+			$value .= sprintf( '%s', esc_html( ucwords( $letter ) ) );
+
+		}
+		
 		if ( 'website' === $column_name ) {
 
 			$value .= sprintf(
