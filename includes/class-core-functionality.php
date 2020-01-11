@@ -249,7 +249,6 @@ class Core_Functionality {
 		}
 
 		if ( isset( $user_profile ) ) {
-			$this->loader->add_action( 'admin_head', $user_profile, 'admin_color_scheme' );
 			$this->loader->add_action( 'init', $user_profile, 'remove_admin_color_scheme_picker' );
 			$this->loader->add_action( 'genesis_setup', $user_profile, 'genesis_clean_up' );
 			$this->loader->add_filter( 'user_contactmethods', $user_profile, 'modify_user_contact_methods', 99, 1 );

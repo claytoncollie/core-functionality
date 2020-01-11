@@ -54,18 +54,6 @@ class Core_Functionality_User_Profile {
 	}
 
 	/**
-	 * Set the admin color to the default.
-	 *
-	 * @return void
-	 *
-	 * @since 1.14.3
-	 */
-	public function set_admin_color_scheme() {
-		global $_wp_admin_css_colors;
-		$_wp_admin_css_colors = 0;
-	}
-
-	/**
 	 * Remove the admin color picker
 	 *
 	 * @return void
