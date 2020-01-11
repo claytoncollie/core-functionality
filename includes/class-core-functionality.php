@@ -249,7 +249,9 @@ class Core_Functionality {
 		}
 
 		if ( isset( $user_profile ) ) {
-			$this->loader->add_action( 'user_contactmethods', $user_profile, 'modify_user_contact_methods' );
+			$this->loader->add_action( 'genesis_setup', $user_profile, 'genesis_clean_up' );
+			$this->loader->add_filter( 'user_contactmethods', $user_profile, 'modify_user_contact_methods', 99, 1 );
+			$this->loader->add_action( 'acf/save_post', $user_profile, 'update_user_meta_artist_filter', 20 );
 		}
 
 	}

@@ -53,6 +53,21 @@ class Core_Functionality_User_Profile {
 
 	}
 
+	public function genesis_clean_up() {
+		// User profile options.
+		remove_action( 'show_user_profile', 'genesis_user_options_fields' );
+		remove_action( 'edit_user_profile', 'genesis_user_options_fields' );
+		// User archive settings.
+		remove_action( 'show_user_profile', 'genesis_user_archive_fields' );
+		remove_action( 'edit_user_profile', 'genesis_user_archive_fields' );
+		// SEO options.
+		remove_action( 'show_user_profile', 'genesis_user_seo_fields' );
+		remove_action( 'edit_user_profile', 'genesis_user_seo_fields' );
+		// Layout options.
+		remove_action( 'show_user_profile', 'genesis_user_layout_fields' );
+		remove_action( 'edit_user_profile', 'genesis_user_layout_fields' );
+	}
+
 	/**
 	 * Custom contact methods for each user profile
 	 *
@@ -68,13 +83,49 @@ class Core_Functionality_User_Profile {
 		unset( $user_contact['jabber'] );
 		unset( $user_contact['yim'] );
 		unset( $user_contact['gplus'] );
-
-		$user_contact['twitter']   = esc_html__( 'Twitter', 'core-functionality' );
-		$user_contact['facebook']  = esc_html__( 'Facebook', 'core-functionality' );
-		$user_contact['instagram'] = esc_html__( 'Instagram', 'core-functionality' );
-		$user_contact['pinterest'] = esc_html__( 'Pinterest', 'core-functionality' );
+		unset( $user_contact['myspace'] );
+		unset( $user_contact['linkedin'] );
+		unset( $user_contact['soundcloud'] );
+		unset( $user_contact['tumblr'] );
+		unset( $user_contact['youtube'] );
+		unset( $user_contact['wikipedia'] );
 
 		return $user_contact;
+
+	}
+
+	/**
+	 * Update user meta when user edit page is saved.
+	 *
+	 * @since 1.4.0
+	 *
+	 * @param int $user_id User ID.
+	 * @return void Return early if current user can not edit users, or no meta fields submitted.
+	 */
+	public function update_user_meta_artist_filter( $user_id ) {
+
+		if ( ! current_user_can( 'edit_users', $user_id ) ) {
+			return;
+		}
+
+		$field = get_field( 'artist_filter', $user_id );
+
+		if ( empty( $field ) ) { 
+			
+			$user_id = str_replace( 'user_', '', $user_id );
+
+			$name = get_user_meta( $user_id, 'last_name', true );
+
+			if ( empty( $name ) ) {
+				$name = get_user_meta( $user_id, 'first_name', true );
+			}
+
+			$letter = mb_substr( $name, 0, 1 );
+			$letter = strtolower( $letter );
+
+			update_user_meta( $user_id, 'artist_filter', $letter );
+
+		}
 
 	}
 
