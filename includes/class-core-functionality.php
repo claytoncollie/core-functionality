@@ -105,6 +105,7 @@ class Core_Functionality {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-post-status.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-dashboards.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-html2jpg.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-core-functionality-user-profile.php';
 
 		$this->loader = new Core_Functionality_Loader();
 
@@ -138,29 +139,28 @@ class Core_Functionality {
 	 */
 	private function define_admin_hooks() {
 
-		$admin      = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
-		$algolia    = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
-		$comments   = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
-		$columns    = new Core_Functionality_Columns( $this->get_plugin_name(), $this->get_version() );
-		$taxonomy   = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
-		$checkin    = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
-		$status     = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
-		$dashboards = new Core_Functionality_Dashboards( $this->get_plugin_name(), $this->get_version() );
-		$html2jpg   = new Core_Functionality_Html2Jpg( $this->get_plugin_name(), $this->get_version() );
+		$admin        = new Core_Functionality_Admin( $this->get_plugin_name(), $this->get_version() );
+		$algolia      = new Core_Functionality_Algolia( $this->get_plugin_name(), $this->get_version() );
+		$comments     = new Core_Functionality_Comments( $this->get_plugin_name(), $this->get_version() );
+		$columns      = new Core_Functionality_Columns( $this->get_plugin_name(), $this->get_version() );
+		$taxonomy     = new Core_Functionality_Taxonomy( $this->get_plugin_name(), $this->get_version() );
+		$checkin      = new Core_Functionality_Checkin( $this->get_plugin_name(), $this->get_version() );
+		$status       = new Core_Functionality_Post_Status( $this->get_plugin_name(), $this->get_version() );
+		$dashboards   = new Core_Functionality_Dashboards( $this->get_plugin_name(), $this->get_version() );
+		$html2jpg     = new Core_Functionality_Html2Jpg( $this->get_plugin_name(), $this->get_version() );
+		$user_pop     = new Core_Functionality_User_Populate( $this->get_plugin_name(), $this->get_version() );
+		$user_profile = new Core_Functionality_User_Profile( $this->get_plugin_name(), $this->get_version() );
 
 		if ( isset( $admin ) ) {
 			$this->loader->add_filter( 'auto_update_plugin', $admin, 'plugins_to_auto_update', 10, 2 );
 			$this->loader->add_filter( 'use_block_editor_for_post_type', $admin, 'gutenberg_support', 10, 2 );
 			$this->loader->add_filter( 'acf/settings/save_json', $admin, 'acf_local_json_save_location' );
 			$this->loader->add_filter( 'acf/settings/load_json', $admin, 'acf_local_json_load_location' );
-			$this->loader->add_action( 'admin_menu', $admin, 'remove_sub_menus' );
-			$this->loader->add_action( 'init', $admin, 'unregister_taxonomy' );
 			$this->loader->add_action( 'init', $admin, 'clean_header' );
 			$this->loader->add_filter( 'xmlrpc_methods', $admin, 'remove_xmlrpc_pingback_ping' );
 			$this->loader->add_action( 'admin_menu', $admin, 'remove_admin_menus' );
 			$this->loader->add_action( 'load-edit.php', $admin, 'no_category_dropdown' );
 			$this->loader->add_action( 'restrict_manage_posts', $admin, 'add_taxonomy_filters_form' );
-			$this->loader->add_action( 'user_contactmethods', $admin, 'modify_user_contact_methods' );
 			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'acf/save_post', $admin, 'field_as_post_name', 20 );
@@ -204,6 +204,8 @@ class Core_Functionality {
 		}
 
 		if ( isset( $taxonomy ) ) {
+			$this->loader->add_action( 'admin_menu', $taxonomy, 'remove_sub_menus' );
+			$this->loader->add_action( 'init', $taxonomy, 'unregister_taxonomy' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_column' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_firing' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_form' );
@@ -234,6 +236,11 @@ class Core_Functionality {
 		if ( isset( $html2jpg ) ) {
 			$this->loader->add_action( 'init', $html2jpg, 'add_rewrite_endpoint' );
 			$this->loader->add_action( 'wp', $html2jpg, 'save_image' );
+		}
+
+
+		if ( isset( $user_profile ) ) {
+			$this->loader->add_action( 'user_contactmethods', $user_profile, 'modify_user_contact_methods' );
 		}
 
 	}

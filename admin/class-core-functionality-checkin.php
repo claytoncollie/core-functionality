@@ -181,7 +181,7 @@ class Core_Functionality_Checkin {
 			}
 
 			if ( ! empty( $term_id ) ) {
-				
+
 				$term = get_term( $term_id, 'rc_location', ARRAY_A );
 
 				if ( ! empty( $term ) ) {

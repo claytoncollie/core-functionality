@@ -54,6 +54,37 @@ class Core_Functionality_Taxonomy {
 	}
 
 	/**
+	 * Remove submenu pages for category and post tag
+	 *
+	 * @since    1.0.0
+	 */
+	public function remove_sub_menus() {
+		remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );
+	}
+
+	/**
+	 * Unset category and post tag taxonomies
+	 *
+	 * @since    1.0.0
+	 */
+	public function unregister_taxonomy() {
+
+		global $wp_taxonomies;
+
+		$taxonomies = array( 'category' );
+
+		foreach ( $taxonomies as $taxonomy ) {
+
+			if ( taxonomy_exists( $taxonomy ) ) {
+
+				unset( $wp_taxonomies[ $taxonomy ] );
+
+			}
+		}
+
+	}
+
+	/**
 	 * Taxonomy - Column
 	 *
 	 * @since    1.0.0

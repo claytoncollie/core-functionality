@@ -127,37 +127,6 @@ class Core_Functionality_Admin {
 	}
 
 	/**
-	 * Remove submenu pages for category and post tag
-	 *
-	 * @since    1.0.0
-	 */
-	public function remove_sub_menus() {
-		remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );
-	}
-
-	/**
-	 * Unset category and post tag taxonomies
-	 *
-	 * @since    1.0.0
-	 */
-	public function unregister_taxonomy() {
-
-		global $wp_taxonomies;
-
-		$taxonomies = array( 'category' );
-
-		foreach ( $taxonomies as $taxonomy ) {
-
-			if ( taxonomy_exists( $taxonomy ) ) {
-
-				unset( $wp_taxonomies[ $taxonomy ] );
-
-			}
-		}
-
-	}
-
-	/**
 	 * Cleans out unsed HTML on wp_head
 	 *
 	 * @since    1.0.0
@@ -268,14 +237,14 @@ class Core_Functionality_Admin {
 		global $typenow;
 
 		// An array of all the taxonomyies you want to display. Use the taxonomy name or slug.
-		$taxonomies = array( 
-			'rc_form', 
-			'rc_firing', 
-			'rc_technique', 
+		$taxonomies = array(
+			'rc_form',
+			'rc_firing',
+			'rc_technique',
 			'rc_column',
-			'rc_row', 
-			'rc_location', 
-			'rc_result' 
+			'rc_row',
+			'rc_location',
+			'rc_result',
 		);
 
 		// Must set this to the post type you want the filter(s) displayed on.
@@ -324,31 +293,6 @@ class Core_Functionality_Admin {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Custom contact methods for each user profile
-	 *
-	 * @param array $user_contact Contact methods.
-	 *
-	 * @return array
-	 *
-	 * @since    1.0.0
-	 */
-	public function modify_user_contact_methods( array $user_contact ) : array {
-
-		unset( $user_contact['aim'] );
-		unset( $user_contact['jabber'] );
-		unset( $user_contact['yim'] );
-		unset( $user_contact['gplus'] );
-
-		$user_contact['twitter']   = esc_html__( 'Twitter', 'core-functionality' );
-		$user_contact['facebook']  = esc_html__( 'Facebook', 'core-functionality' );
-		$user_contact['instagram'] = esc_html__( 'Instagram', 'core-functionality' );
-		$user_contact['pinterest'] = esc_html__( 'Pinterest', 'core-functionality' );
-
-		return $user_contact;
-
 	}
 
 	/**
