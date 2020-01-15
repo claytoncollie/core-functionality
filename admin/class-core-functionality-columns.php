@@ -229,6 +229,31 @@ class Core_Functionality_Columns {
 	}
 
 	/**
+	 * Replaces the default gravatar URL with their custom photo from the user profile.
+	 *
+	 * @param string $url Gravatar URL.
+	 * @param int    $user_id User ID.
+	 * @param array  $args Arguments.
+	 *
+	 * @return string
+	 *
+	 * @since 1.15.0
+	 */
+	public function get_avatar_url( string $url, int $user_id, array $args ) : string {
+
+		$avatar_id = get_field( 'artist_photo', "user_{$user_id}" );
+
+		if ( ! empty( $avatar_id ) ) {
+
+			$url = wp_get_attachment_url( $avatar_id );
+
+		}
+
+		return $url;
+
+	}
+
+	/**
 	 * Custom column titles for users
 	 *
 	 * @param array $columns All columns.
@@ -239,9 +264,8 @@ class Core_Functionality_Columns {
 	 */
 	public function user_column_titles( array $columns ) : array {
 
-		$columns['photo']   = esc_html__( 'Photo', 'core-functionality' );
-		$columns['website'] = esc_html__( 'Website', 'core-functionality' );
 		$columns['letter']  = esc_html__( 'Filter', 'core-functionality' );
+		$columns['website'] = esc_html__( 'Website', 'core-functionality' );
 
 		return $columns;
 	}
@@ -259,14 +283,22 @@ class Core_Functionality_Columns {
 	 */
 	public function user_column_content( string $value, string $column_name, string $user_id ) : string {
 
-		$user_info     = get_userdata( $user_id );
-		$letter        = get_field( 'artist_filter', 'user_' . $user_id );
-		$attachment_id = get_field( 'artist_photo', 'user_' . $user_id );
-		$author_avatar = wp_get_attachment_image_src( $attachment_id, 'artist-image' );
+		$user_info = get_userdata( $user_id );
+		$letter    = get_field( 'artist_filter', 'user_' . $user_id );
 
 		if ( 'letter' === $column_name ) {
 
-			$value .= sprintf( '%s', esc_html( ucwords( $letter ) ) );
+			$value .= sprintf(
+				'<a href="%s" target="_blank">%s</a>',
+				esc_url(
+					add_query_arg(
+						'artist_filter',
+						$letter,
+						get_bloginfo( 'url' ) . '/artists'
+					)
+				),
+				esc_html( ucwords( $letter ) )
+			);
 
 		}
 
@@ -276,15 +308,6 @@ class Core_Functionality_Columns {
 				'<a target="_blank" href="%s">%s</a>',
 				esc_url( $user_info->user_url ),
 				esc_url( $user_info->user_url )
-			);
-
-		}
-
-		if ( 'photo' === $column_name ) {
-
-			$value .= sprintf(
-				'<img src="%s" style="max-height: 100px;">',
-				esc_url( $author_avatar[0] )
 			);
 
 		}

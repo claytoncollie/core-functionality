@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.14.3';
+		$this->version     = '1.15.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -195,6 +195,7 @@ class Core_Functionality {
 		}
 
 		if ( isset( $columns ) ) {
+			$this->loader->add_filter( 'get_avatar_url', $columns, 'get_avatar_url', 10, 3 );
 			$this->loader->add_action( 'manage_posts_columns', $columns, 'post_column_titles' );
 			$this->loader->add_action( 'manage_posts_custom_column', $columns, 'post_column_content', 10, 2 );
 			$this->loader->add_filter( 'manage_edit-post_sortable_columns', $columns, 'post_id_column_sortable' );
