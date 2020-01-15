@@ -239,7 +239,7 @@ class Core_Functionality_Columns {
 	 *
 	 * @since 1.15.0
 	 */
-	public function get_avatar_url( string $url, int $user_id, array $args ) : string {
+	public function get_avatar_url( string $url, $user_id, array $args ) : string {
 
 		$avatar_id = get_field( 'artist_photo', "user_{$user_id}" );
 
