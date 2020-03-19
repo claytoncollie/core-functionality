@@ -249,7 +249,7 @@ class Core_Functionality_User_Populate {
 			$home_path = dirname( dirname( dirname( dirname( __FILE__ ) ) ) );
 		}
 		$home_path          = untrailingslashit( $home_path );
-		$uploaded_file_path = $home_path . $path;
+		$uploaded_file_path = str_replace( '/wp-content', '', $home_path ) . $path['path'];
 
 		// Check the type of file. We'll use this as the 'post_mime_type'.
 		$filetype = wp_check_filetype( $file_base_name, null );
