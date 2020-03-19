@@ -232,14 +232,24 @@ class Core_Functionality_Columns {
 	 * Replaces the default gravatar URL with their custom photo from the user profile.
 	 *
 	 * @param string $url Gravatar URL.
-	 * @param int    $user_id User ID.
+	 * @param mixed  $user_meta User Meta.
 	 * @param array  $args Arguments.
 	 *
 	 * @return string
 	 *
 	 * @since 1.15.0
 	 */
-	public function get_avatar_url( string $url, $user_id, array $args ) : string {
+	public function get_avatar_url( string $url, $user_meta, array $args ) : string {
+
+		/**
+		 * User meta is a mixed value so we have to see what we get before
+		 * sending data to the custom field.
+		 */
+		if ( is_int( $user_meta ) ) {
+			$user_id = $user_meta;
+		} else {
+			$user_id = get_user_by( 'email', $user_meta )->ID;
+		}
 
 		$avatar_id = get_field( 'artist_photo', "user_{$user_id}" );
 
