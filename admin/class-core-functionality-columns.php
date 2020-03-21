@@ -247,17 +247,31 @@ class Core_Functionality_Columns {
 		 */
 		if ( is_int( $user_meta ) ) {
 			$user_id = $user_meta;
+		} elseif ( is_string( $user_meta ) ) {
+			$user = get_user_by( 'email', $user_meta );
+			if ( ! empty( $user ) && is_object( $user ) ) {
+				$user_id = $user->ID;
+			} else {
+				$user_id = false;
+			}
+		} elseif ( is_object( $user_meta ) ) {
+			$user_id = $user_meta->ID;
 		} else {
-			$user_id = get_user_by( 'email', $user_meta )->ID;
+			$user_if = false;
 		}
 
-		$avatar_id = get_field( 'artist_photo', "user_{$user_id}" );
+		if ( ! empty( $user_id ) ) {
 
-		if ( ! empty( $avatar_id ) ) {
+			$avatar_id = get_field( 'artist_photo', "user_{$user_id}" );
 
-			$url = wp_get_attachment_url( $avatar_id );
+			if ( ! empty( $avatar_id ) ) {
+	
+				$url = wp_get_attachment_url( $avatar_id );
+	
+			}
 
 		}
+
 
 		return $url;
 
