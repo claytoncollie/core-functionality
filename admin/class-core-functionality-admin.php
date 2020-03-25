@@ -372,4 +372,14 @@ class Core_Functionality_Admin {
 		return $prefix;
 	}
 
+	/**
+	 * Remove metaboxes from post edit screen
+	 *
+	 * @return void
+	 * @since 1.17.0
+	 */
+	public function remove_meta_box() {
+		remove_meta_box( 'members-cp', 'post', 'advanced' );
+	}
+
 }

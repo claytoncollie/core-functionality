@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.15.4';
+		$this->version     = '1.16.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -165,6 +165,7 @@ class Core_Functionality {
 			$this->loader->add_filter( 'the_excerpt_rss', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'acf/save_post', $admin, 'field_as_post_name', 20 );
+			$this->loader->add_action( 'add_meta_boxes', $admin, 'remove_meta_box', 20 );
 		}
 
 		if ( isset( $algolia ) ) {
@@ -254,6 +255,7 @@ class Core_Functionality {
 			$this->loader->add_action( 'genesis_setup', $user_profile, 'genesis_clean_up' );
 			$this->loader->add_filter( 'user_contactmethods', $user_profile, 'modify_user_contact_methods', 99, 1 );
 			$this->loader->add_action( 'acf/save_post', $user_profile, 'update_user_meta_artist_filter', 20 );
+			$this->loader->add_action( 'user_register', $user_profile, 'update_user_meta_artist_filter', 10, 1 );
 		}
 
 	}

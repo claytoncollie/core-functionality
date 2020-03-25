@@ -141,29 +141,7 @@ class Core_Functionality_Dashboards {
 	 * @since 1.11.0
 	 */
 	public function introduction() {
-
-		echo $this->intro(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $this->quick_actions(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
-	}
-
-	/**
-	 * Custom dashboard message
-	 *
-	 * @return string
-	 *
-	 * @since    1.11.0
-	 */
-	public function intro() : string {
-
-		return sprintf(
-			'<p>%s %s</p><p>%s</p><p>%s</p><hr>',
-			esc_html__( 'Hi there! This is where you can access your personal profile.', 'core-functionality' ),
-			esc_html__( 'Select the Profile link on the left to change the spelling of your name, email address, website address, social media links or your profile photo.', 'core-functionality' ),
-			esc_html__( 'Need extra help or want to report a problem with the website?', 'core-functionality' ),
-			wp_kses_post( '<a href="mailto:info@rosenfieldcollection.com">info@rosenfieldcollection.com</a>' )
-		);
-
 	}
 
 	/**
@@ -179,7 +157,8 @@ class Core_Functionality_Dashboards {
 
 		$pages = array(
 			'checkin' => __( 'For when a piece is first entered into the collection and needs the bare minimum amount of information along with a quick photo.', 'core-functionality' ),
-			'manage'  => __( 'For when entering a complete object into the collection. Use for after a pieces has all of their photos taken and all infomation compiled.', 'core-functionality' ),
+			'pending' => __( 'For when a piece is checked into the collection and needs to move out of the kitchen and into the storage area. Most pieces on this page only have a photo and an artist name.', 'core-functionality' ),
+			'manage'  => __( 'For when entering a complete object into the collection. Use for after a pieces has all of their photos taken and all infomation compiled. Use this page if you cannot find it on the PENDING page listed above.', 'core-functionality' ),
 			'report'  => __( 'Will show all objects sorted by artist. Useful for printing out to see all infomation in a compact view.', 'core-functionality' ),
 		);
 

@@ -265,13 +265,11 @@ class Core_Functionality_Columns {
 			$avatar_id = get_field( 'artist_photo', "user_{$user_id}" );
 
 			if ( ! empty( $avatar_id ) ) {
-	
+
 				$url = wp_get_attachment_url( $avatar_id );
-	
+
 			}
-
 		}
-
 
 		return $url;
 
