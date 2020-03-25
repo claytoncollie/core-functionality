@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.16.0';
+		$this->version     = '1.16.1';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -208,7 +208,6 @@ class Core_Functionality {
 
 		if ( isset( $taxonomy ) ) {
 			$this->loader->add_action( 'admin_menu', $taxonomy, 'remove_sub_menus' );
-			$this->loader->add_action( 'init', $taxonomy, 'unregister_taxonomy' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_column' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_firing' );
 			$this->loader->add_action( 'init', $taxonomy, 'taxonomy_form' );

@@ -63,28 +63,6 @@ class Core_Functionality_Taxonomy {
 	}
 
 	/**
-	 * Unset category and post tag taxonomies
-	 *
-	 * @since    1.0.0
-	 */
-	public function unregister_taxonomy() {
-
-		global $wp_taxonomies;
-
-		$taxonomies = array( 'category' );
-
-		foreach ( $taxonomies as $taxonomy ) {
-
-			if ( taxonomy_exists( $taxonomy ) ) {
-
-				unset( $wp_taxonomies[ $taxonomy ] );
-
-			}
-		}
-
-	}
-
-	/**
 	 * Taxonomy - Column
 	 *
 	 * @since    1.0.0
