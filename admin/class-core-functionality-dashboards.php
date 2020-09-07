@@ -69,6 +69,7 @@ class Core_Functionality_Dashboards {
 		remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
 		remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' );
 
 		// Remove Yoast SEO metabox.
 		remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'side' );

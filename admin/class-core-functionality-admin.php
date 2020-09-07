@@ -63,7 +63,7 @@ class Core_Functionality_Admin {
 	 *
 	 * @since 1.8.0
 	 */
-	public function plugins_to_auto_update( bool $update, object $item ) : bool {
+	public function plugins_to_auto_update( ?bool $update, object $item ) : bool {
 
 		$plugins = array(
 			'core-functionality',

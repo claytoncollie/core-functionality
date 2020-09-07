@@ -115,6 +115,7 @@ class Core_Functionality_Algolia {
 			'wp_stream_alerts',
 			'page',
 			'post',
+			'scheduled-action',
 		);
 	}
 
@@ -129,6 +130,7 @@ class Core_Functionality_Algolia {
 		return array(
 			'nav_menu',
 			'link_category',
+			'category',
 			'post_format',
 			'rc_row',
 			'rc_location',
@@ -138,6 +140,7 @@ class Core_Functionality_Algolia {
 			'rc_firing',
 			'post_tag',
 			'rc_result',
+			'action-group',
 		);
 	}
 
