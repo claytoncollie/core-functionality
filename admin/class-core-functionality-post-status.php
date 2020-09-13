@@ -143,7 +143,7 @@ class Core_Functionality_Post_Status {
 		       $('select#post_status').append('<option value=\"{$this->post_status}\"{$selected}>{$this->action_label}</option>');
 		       $('.misc-pub-section label').append('{$label}');
 		  });
-		  </script>"; // phpcs:ignore WordPress.Security.EscapeOutput.DeprecatedWhitelistCommentFound
+		  </script>"; // phpcs:ignore
 		}
 
 	}
