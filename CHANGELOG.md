@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.18.0
+* Remove the Qucik Edits link on the Post Edit table
+
 ### 1.17.0
 * Add total cost dashboard
 * Add post status dashboard

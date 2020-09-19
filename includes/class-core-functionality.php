@@ -68,7 +68,7 @@ class Core_Functionality {
 	public function __construct() {
 
 		$this->plugin_name = 'core-functionality';
-		$this->version     = '1.17.0';
+		$this->version     = '1.18.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -166,6 +166,7 @@ class Core_Functionality {
 			$this->loader->add_filter( 'the_content_feed', $admin, 'add_image_to_rss' );
 			$this->loader->add_filter( 'acf/save_post', $admin, 'field_as_post_name', 20 );
 			$this->loader->add_action( 'add_meta_boxes', $admin, 'remove_meta_box', 20 );
+			$this->loader->add_filter( 'post_row_actions', $admin, 'remove_quick_edit', 10, 1 );
 		}
 
 		if ( isset( $algolia ) ) {

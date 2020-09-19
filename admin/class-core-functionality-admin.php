@@ -382,4 +382,16 @@ class Core_Functionality_Admin {
 		remove_meta_box( 'members-cp', 'post', 'advanced' );
 	}
 
+	/**
+	 * Remove the Quick Edit link from the post edit table.
+	 *
+	 * @param array $actions Row actions.
+	 * @return array
+	 * @since 1.18.0
+	 */
+	function remove_quick_edit( array $actions ) : array {
+		unset( $actions['inline hide-if-no-js'] );
+		return $actions;
+	}
+
 }
