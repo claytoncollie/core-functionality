@@ -223,7 +223,7 @@ class Core_Functionality_Dashboards {
 						$object_id = get_field( 'object_id', get_the_ID() );
 
 						if ( ! empty( $object_id ) ) {
-							$posts[] .= $object_id;
+							$posts[] = $object_id;
 						}
 					}
 					wp_reset_postdata();
@@ -375,7 +375,7 @@ class Core_Functionality_Dashboards {
 				$price = get_field( 'rc_object_purchace_price' );
 
 				if ( ! empty( $price ) ) {
-					$total[] .= $price;
+					$total[] = $price;
 				}
 			}
 			wp_reset_postdata();
@@ -399,7 +399,7 @@ class Core_Functionality_Dashboards {
 
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$output[] .= $this->get_taxonomy_purchase_price( absint( $term->term_id ) );
+				$output[] = $this->get_taxonomy_purchase_price( absint( $term->term_id ) );
 			}
 
 			$output = array_sum( $output );
