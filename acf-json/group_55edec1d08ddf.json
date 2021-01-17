@@ -241,7 +241,7 @@
         {
             "key": "field_5e14b7426c617",
             "label": "Purchae Date",
-            "name": "rc_object_purchae_date",
+            "name": "rc_object_purchase_date",
             "type": "date_picker",
             "instructions": "",
             "required": 0,
@@ -258,7 +258,7 @@
         {
             "key": "field_57839ad815c60",
             "label": "Purchace Price",
-            "name": "rc_object_purchace_price",
+            "name": "rc_object_purchase_price",
             "type": "number",
             "instructions": "Only numbers and decimals. 3.45 or 4.00. Not $3.45.",
             "required": 0,
