@@ -330,7 +330,7 @@
         "categories",
         "send-trackbacks"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1578451057
+    "modified": 1629496766
 }
