@@ -372,7 +372,7 @@ class Core_Functionality_Dashboards {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 
-				$price = get_field( 'rc_object_purchace_price' );
+				$price = get_field( 'rc_object_purchase_price' );
 
 				if ( ! empty( $price ) ) {
 					$total[] .= $price;
