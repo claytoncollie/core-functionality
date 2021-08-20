@@ -97,6 +97,8 @@ class Core_Functionality_Columns {
 		$defaults['width']                 = esc_html__( 'Width', 'core-functionality' );
 		$defaults['length']                = esc_html__( 'Length', 'core-functionality' );
 		$defaults['gallery']               = esc_html__( 'Gallery', 'core-functionality' );
+		$defaults['purchase_price']        = esc_html__( 'Purchase Price', 'core-functionality' );
+		$defaults['purchase_date']         = esc_html__( 'Purchase Date', 'core-functionality' );
 
 		return $defaults;
 
@@ -208,6 +210,28 @@ class Core_Functionality_Columns {
 					);
 
 				endforeach;
+
+			}
+		}
+
+		if ( 'purchase_price' === $column_name ) {
+
+			$purchase_price = get_field( 'rc_object_purchase_price', $post_id );
+
+			if ( $purchase_price ) {
+
+				echo esc_html( $purchase_price );
+
+			}
+		}
+
+		if ( 'purchase_date' === $column_name ) {
+
+			$purchase_date = get_field( 'rc_object_purchase_date', $post_id );
+
+			if ( $purchase_date ) {
+
+				echo esc_html( $purchase_date );
 
 			}
 		}
