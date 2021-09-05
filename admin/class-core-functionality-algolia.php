@@ -116,6 +116,7 @@ class Core_Functionality_Algolia {
 			'page',
 			'post',
 			'scheduled-action',
+			'wp_template',
 		);
 	}
 
@@ -141,6 +142,7 @@ class Core_Functionality_Algolia {
 			'post_tag',
 			'rc_result',
 			'action-group',
+			'wp_theme',
 		);
 	}
 
