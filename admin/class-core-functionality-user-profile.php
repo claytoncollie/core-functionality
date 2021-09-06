@@ -147,5 +147,55 @@ class Core_Functionality_User_Profile {
 
 	}
 
+	/**
+	 * Import user data during September 2021
+	 *
+	 * @return void
+	 *
+	 * @since 1.19.8
+	 */
+	public function import_users_september_2021() {
+
+		if ( get_option( 'rc_user_import_september_2021' ) === 'completed' ) {
+			return;
+		}
+
+		ob_start();
+		include_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/users.json';
+		$users = json_decode( ob_get_clean(), true );
+
+		if ( null === $users ) {
+			return;
+		}
+
+		if ( ! is_array( $users ) ) {
+			return;
+		}
+
+		foreach ( $users as $user ) {
+			$id        = $user['id'] ?? null;
+			$website   = $user['website'] ?? get_user_meta( $id, 'user_url', true );
+			$facebook  = $user['facebook'] ?? get_user_meta( $id, 'facebook', true );
+			$instagram = $user['instagram'] ?? get_user_meta( $id, 'instagram', true );
+			$bio       = $user['bio'] ?? get_user_meta( $id, 'description', true );
+
+			if ( is_null( $id ) ) {
+				continue;
+			}
+
+			wp_update_user(
+				array(
+					'ID'          => $id,
+					'user_url'    => $website,
+					'facebook'    => $facebook,
+					'instagram'   => $instagram,
+					'description' => $bio,
+				)
+			);
+
+		}
+		// Add option to database so we only run once.
+		update_option( 'rc_user_import_september_2021', 'completed' );
+	}
 
 }
